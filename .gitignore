@@ -1,0 +1,44 @@
+vendor/
+node_modules/
+npm-debug.log
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+storage/*.key
+.env.*.php
+.env.php
+.env
+Homestead.yaml
+Homestead.json
+
+# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
+.rocketeer/
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/php.xml
+.idea/misc.xml
+.gitattributes
+.idea/modules.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/cms.dev.iml
+many_to_many/süper ornek.zip
+many_to_many/selman.dev_calisma_1.zip
+many_to_many/onetoone.dev.zip
+many_to_many/manyTOmany.zip
+many_to_many/güzel db/database/seeds/DatabaseSeeder.php
+many_to_many/güzel db/database/migrations/2018_07_22_093017_create_postTagsRelations_table.php
+many_to_many/güzel db/database/migrations/2018_07_21_234016_create_postCategoriesRelations_table.php
+many_to_many/güzel db/database/migrations/2018_07_21_200330_create_postTags_table.php
+many_to_many/güzel db/database/migrations/2018_07_21_200219_create_postCategories_table.php
+many_to_many/güzel db/database/migrations/2018_07_21_195727_create_postComments_table.php
+many_to_many/güzel db/database/migrations/2018_07_21_172142_create_posts_table.php
+many_to_many/güzel db/database/migrations/2014_10_12_100000_create_password_resets_table.php
+many_to_many/güzel db/database/migrations/2014_10_12_000000_create_users_table.php
+many_to_many/güzel db/database/factories/ModelFactory.php
+many_to_many/database.rar
