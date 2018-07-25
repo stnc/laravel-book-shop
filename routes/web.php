@@ -64,9 +64,9 @@ Route::resource('employees', 'EmployeesController');
 
 
 // admin routes
-Route::group(['namespace' => 'Admin'], function () {
-
-    Route::get('admin/news', [
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function()
+{
+    Route::get('news', [
 	        'uses' => 'PostsController@index'
 	    ]);
 });
