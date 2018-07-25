@@ -11,14 +11,15 @@
 |
 */
 //https://www.easylaravelbook.com/blog/creating-a-hasmany-relation-in-laravel-5/
-//https://itsolutionstuff.com/post/laravel-5-ajax-crud-with-pagination-example-and-demo-from-scratchexample.html
+//https://itsolutionstuff.com/post/laravel-5-ajax-crud-with-pagination-example-and-demo-from-scratchexample.html   //ajax
 //https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
 //https://martinbean.co.uk/blog/2014/07/04/re-using-controllers-for-admin-and-non-admin-routes-in-laravel/
-
+//https://itsolutionstuff.com/post/crud-create-read-update-delete-example-in-laravel-52-from-scratchexample.html
 use App\Posts;
 use App\PostsCategories;
 use App\PostTags;
 use App\PostsComments;
+
 Route::get('/', function () {
 
 
@@ -36,10 +37,10 @@ Route::get('/', function () {
 
 
     $tags = new PostTags(['name' => 'ishak new tag']);
-   // $Comments = new PostsComments(['comment_content' => 'yeni yorumum']);
+    // $Comments = new PostsComments(['comment_content' => 'yeni yorumum']);
 
     $task->categories()->save($category);
-   // $task->Comments()->save($Comments);
+    // $task->Comments()->save($Comments);
     $task->tags()->save($tags);
 
     $list = Posts::find(1);
@@ -51,7 +52,7 @@ Route::get('/', function () {
 
     $list->categories()->saveMany($categories);
 
-  $list->categories()->attach([7,6]);//kategoriye 7 ve 6 da bağlıyor
+    $list->categories()->attach([7, 6]);//kategoriye 7 ve 6 da bağlıyor
 //    $list->categories()->attach(5);
 
 });
@@ -60,13 +61,13 @@ Route::resource('companies', 'CompaniesController');
 Route::resource('employees', 'EmployeesController');
 
 
+// admin routes http://www.w3programmers.com/laravel-route-groups/
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
+  /*  Route::get('get', [
+        'uses' => 'PostsController@index'
+    ]);
+*/
+    Route::resource('posts','PostsController');
 
-
-// admin routes
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function()
-{
-    Route::get('news', [
-	        'uses' => 'PostsController@index'
-	    ]);
 });
