@@ -12,6 +12,8 @@
 */
 //https://www.easylaravelbook.com/blog/creating-a-hasmany-relation-in-laravel-5/
 //https://itsolutionstuff.com/post/laravel-5-ajax-crud-with-pagination-example-and-demo-from-scratchexample.html
+//https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
+//https://martinbean.co.uk/blog/2014/07/04/re-using-controllers-for-admin-and-non-admin-routes-in-laravel/
 
 use App\Posts;
 use App\PostsCategories;
@@ -62,7 +64,9 @@ Route::resource('employees', 'EmployeesController');
 
 
 // admin routes
-Route::group(array('prefix' => 'admin'), function()
-{
-    Route::resource('item', 'ItemController');
+Route::group(['namespace' => 'Admin'], function () {
+
+    Route::get('admin/news', [
+	        'uses' => 'PostsController@index'
+	    ]);
 });
