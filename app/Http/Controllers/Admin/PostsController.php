@@ -16,7 +16,7 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
 
      */
-
+//https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
     public function index(Request $request)
 
     {
@@ -183,7 +183,7 @@ class PostsController extends Controller
 
         AllPosts::find($id)->delete();
 
-        return redirect()->route('PostCRUD.index')
+        return redirect()->route('posts.index')
 
             ->with('success','AllPosts deleted successfully');
 
