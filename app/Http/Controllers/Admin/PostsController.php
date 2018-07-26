@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Posts as AllPosts ;
+
 class PostsController extends Controller
 {
     /**
@@ -100,8 +101,10 @@ class PostsController extends Controller
     {
 
         $Posts = AllPosts::find($id);
+        $tags =($Posts->tags()->get());
+        $comments=($Posts->comments()->get());
 
-        return view('PostCRUD.show',compact('Posts'));
+        return view('PostCRUD.show',compact('Posts','tags'));
 
     }
 
