@@ -21,7 +21,7 @@ class Posts extends Model
             ->withTimestamps();
     }
 
-    public function Comments()
+    public function comments()
     {
 
         return $this->hasOne('App\PostsComments','post_id');
