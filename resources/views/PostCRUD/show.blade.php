@@ -4,7 +4,7 @@
 
 @section('content')
 
-
+    <div class="container">
     <div class="row">
 
         <div class="col-lg-12 margin-tb">
@@ -56,6 +56,13 @@
 
 
     </div>
+    @foreach ($tags as  $employee)
 
+                @if ($loop->iteration == 1)
+                    <b>: {{ $tags->count() }} tag(s)</b>
+                @endif
+                {{ $employee->name }},
 
+    @endforeach
+    </div>
 @endsection

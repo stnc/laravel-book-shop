@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+<div class="container">
 
     <div class="row">
 
@@ -88,5 +88,5 @@
 
     {!! Form::close() !!}
 
-
+</div>
 @endsection
