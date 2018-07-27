@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Posts as AllPosts ;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -124,8 +125,9 @@ class PostsController extends Controller
     public function edit($id)
 
     {
-
+////https://laraveldaily.com/upload-multiple-files-laravel-5-4/
         $Posts = AllPosts::find($id);
+
 
         return view('PostCRUD.edit',compact('Posts'));
 
@@ -150,20 +152,43 @@ class PostsController extends Controller
 
     {
 
+
+        $file = $request->file('media_picture');
+        $destinationPath = 'uploads';
+
+
+
         $this->validate($request, [
-
             'post_title' => 'required',
-
             'post_content' => 'required',
-
+            'media_picture' => ' mimes:jpeg,jpg,png | max:1000',
         ]);
 
 
-        AllPosts::find($id)->update($request->all());
+
+        if ($request->hasFile('media_picture'))
+        {
+            $file =$request->media_picture;
+            $fileName = $file->getClientOriginalName();
+            $file->move($destinationPath,$file->getClientOriginalName());
+        } else {
+            $fileName=null;
+        }
+
+
+
+
+//$request->all()
+        $update_data=['post_title'=>$request->post_title,
+            'post_content'=>$request->post_content,
+            'media_picture'=>$fileName
+            ];
+
+
+        AllPosts::find($id)->update($update_data);
 
         return redirect()->route('posts.index')
-
-            ->with('success','AllPosts updated successfully');
+                          ->with('success','AllPosts updated successfully');
 
     }
 

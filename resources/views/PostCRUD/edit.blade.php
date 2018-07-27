@@ -46,7 +46,7 @@
     @endif
 
 
-    {!! Form::model($Posts, ['method' => 'PATCH','route' => ['posts.update', $Posts->id]]) !!}
+    {!! Form::model($Posts, ['method' => 'PATCH','files'=>'true','route' => ['posts.update', $Posts->id]]) !!}
 
     <div class="row">
 
@@ -76,6 +76,17 @@
 
         </div>
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>MEdia:</strong>
+
+                {!! Form::file('media_picture', null, array('placeholder' => 'MEdia','class' => 'form-control','style'=>'height:100px')) !!}
+                <img src="/uploads/{{ $Posts->media_picture}}" alt="">
+            </div>
+
+        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 

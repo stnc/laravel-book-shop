@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('post_excerpts')->nullable();;
             $table->char('post_status');
             $table->char('comment_status')->nullable();;
+            $table->char('media_picture')->nullable();;
             $table->integer('post_order');
             $table->timestamps();
         });

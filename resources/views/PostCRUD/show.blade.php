@@ -54,6 +54,17 @@
 
         </div>
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>İmage:</strong>
+                <img src="/uploads/{{ $Posts->media_picture}}" alt="">
+
+            </div>
+
+        </div>
+
 
     </div>
     @foreach ($tags as  $employee)

@@ -46,7 +46,7 @@
     @endif
 
 
-    {!! Form::open(array('route' => 'posts.store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'posts.store','files'=>'true','method'=>'POST')) !!}
 
     <div class="row">
 
@@ -76,6 +76,18 @@
 
         </div>
 
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>MEdia:</strong>
+
+                {!! Form::file('media_picture', null, array('placeholder' => 'MEdia','class' => 'form-control')) !!}
+
+            </div>
+
+        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
