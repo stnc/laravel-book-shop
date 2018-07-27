@@ -42,3 +42,4 @@ many_to_many/güzel db/database/migrations/2014_10_12_100000_create_password_res
 many_to_many/güzel db/database/migrations/2014_10_12_000000_create_users_table.php
 many_to_many/güzel db/database/factories/ModelFactory.php
 many_to_many/database.rar
+.idea/blog.dev.iml

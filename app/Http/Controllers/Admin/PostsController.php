@@ -68,16 +68,16 @@ class PostsController extends Controller
 
         $this->validate($request, [
 
-            'title' => 'required',
+            'post_title' => 'required',
 
-            'description' => 'required',
+            'post_content' => 'required',
 
         ]);
 
 
         AllPosts::create($request->all());
 
-        return redirect()->route('PostCRUD.index')
+        return redirect()->route('posts.index')
 
             ->with('success','AllPosts created successfully');
 

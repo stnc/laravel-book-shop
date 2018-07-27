@@ -57,7 +57,7 @@
 
                 <strong>Title:</strong>
 
-                {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+                {!! Form::text('post_title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
 
             </div>
 
@@ -70,7 +70,7 @@
 
                 <strong>Description:</strong>
 
-                {!! Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
+                {!! Form::textarea('post_content', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
 
             </div>
 
