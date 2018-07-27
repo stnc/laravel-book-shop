@@ -1,6 +1,7 @@
 <?php
 
-namespace App;
+
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +13,6 @@ class PostsComments extends Model
 
     public function posts()
     {
-        return $this->belongsTo('App\Posts')->withTimestamps();
+        return $this->belongsTo('App\Model\Posts')->withTimestamps();
     }
 }

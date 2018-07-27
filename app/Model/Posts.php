@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,20 +10,20 @@ class Posts extends Model
     //  protected $fillable=['name','description'];
     public function categories()
     {
-        return $this->belongsToMany('App\PostsCategories', 'posts_categories_relations',  'post_id','category_id')
+        return $this->belongsToMany('App\Model\PostsCategories', 'posts_categories_relations',  'post_id','category_id')
             ->withTimestamps();
     }
 
     public function tags()
     {
 
-        return $this->belongsToMany('App\PostTags','posts_tags_relations', 'post_id','tag_id' )
+        return $this->belongsToMany('App\Model\PostTags','posts_tags_relations', 'post_id','tag_id' )
             ->withTimestamps();
     }
 
     public function comments()
     {
 
-        return $this->hasOne('App\PostsComments','post_id');
+        return $this->hasOne('App\Model\PostsComments','post_id');
     }
 }

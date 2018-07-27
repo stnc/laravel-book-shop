@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Posts as AllPosts ;
+use App\Model\Posts as AllPosts ;
 use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
