@@ -50,49 +50,68 @@
 
     <div class="row">
 
+        <div class="col-md-4 order-md-2 mb-4">
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+            <ul>
+                    @php
+                   //  dd($Posts->categories[0]->name);
+                    @endphp
 
-            <div class="form-group">
+    <h5>            Bağlı olduğu kategoriler</h5>
+                        @foreach ($Posts->categories as $cat)
+                            <li>
+                                    {{$cat->name}}
+                            </li>
+                        @endforeach
+            </ul>
 
-                <strong>Title:</strong>
+        </div>
 
-                {!! Form::text('post_title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+        <div class="col-md-8 order-md-10 mb-8">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <div class="form-group">
+
+                    <strong>Title:</strong>
+
+                    {!! Form::text('post_title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+
+                </div>
 
             </div>
 
-        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
+                <div class="form-group">
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+                    <strong>Description:</strong>
 
-            <div class="form-group">
+                    {!! Form::textarea('post_content', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
 
-                <strong>Description:</strong>
-
-                {!! Form::textarea('post_content', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
+                </div>
 
             </div>
 
-        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
 
-            <div class="form-group">
+                    <strong>MEdia:</strong>
 
-                <strong>MEdia:</strong>
+                    {!! Form::file('media_picture', null, array('placeholder' => 'MEdia','class' => 'form-control','style'=>'height:100px')) !!}
+                    <img src="/uploads/{{ $Posts->media_picture}}" alt="">
+                </div>
 
-                {!! Form::file('media_picture', null, array('placeholder' => 'MEdia','class' => 'form-control','style'=>'height:100px')) !!}
-                <img src="/uploads/{{ $Posts->media_picture}}" alt="">
             </div>
 
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-        </div>
 
 
     </div>

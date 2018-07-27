@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
+    //https://www.kahramaner.com/yazilim/query-builder-methods/
     /**
 
      * Display a listing of the resource.
@@ -125,9 +126,10 @@ class PostsController extends Controller
     public function edit($id)
 
     {
-////https://laraveldaily.com/upload-multiple-files-laravel-5-4/
-        $Posts = AllPosts::find($id);
 
+       // $Posts = AllPosts::find($id);
+        $Posts = AllPosts::find($id)->categories()->get();//reverse
+        $Posts = AllPosts::where ('id','=',$id)->with('categories')->first();;
 
         return view('PostCRUD.edit',compact('Posts'));
 
@@ -151,7 +153,8 @@ class PostsController extends Controller
     public function update(Request $request, $id)
 
     {
-
+////https://laraveldaily.com/upload-multiple-files-laravel-5-4/
+/// /// https://laracasts.com/discuss/channels/laravel/how-to-display-file-which-had-already-upload-laravel-52?page=1
 
         $file = $request->file('media_picture');
         $destinationPath = 'uploads';
