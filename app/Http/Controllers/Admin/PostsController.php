@@ -87,8 +87,18 @@ class PostsController extends Controller
 
         ]);
 
+        $update_data=['post_title'=>$request->post_title,
+            'post_content'=>$request->post_content,
+        ];
 
-        AllPosts::create($request->all());
+        //  AllPosts::create($request->all());
+        $task=  AllPosts::create($update_data);
+        // $task->Comments()->save($Comments);
+        $task->tags()->create([
+            'name' => $request->get('tags'),
+        ]);
+
+
 
         return redirect()->route('posts.index')
 
@@ -200,7 +210,6 @@ class PostsController extends Controller
 
 
 
-//$request->all()
         $update_data=['post_title'=>$request->post_title,
             'post_content'=>$request->post_content,
             'media_picture'=>$fileName
