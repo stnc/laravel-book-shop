@@ -39,6 +39,7 @@ Route::get('/', function () {
     $tags = new PostTags(['name' => 'ishak new tag']);
     // $Comments = new PostsComments(['comment_content' => 'yeni yorumum']);
 
+
     $task->categories()->save($category);
     // $task->Comments()->save($Comments);
     $task->tags()->save($tags);
@@ -68,7 +69,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         'uses' => 'PostsController@index'
     ]);
 */
+    Route::resource('auth', 'AuthController');
+ //  Route::auth();
     Route::resource('posts','PostsController');
+
+  //  Route::get('/admin', 'HomeController@admin')->middleware('is_admin')->name('admin');
 
 });
 Auth::routes();
@@ -78,3 +83,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
