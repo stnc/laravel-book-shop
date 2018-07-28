@@ -22,8 +22,8 @@ use App\PostsComments;
 
 Route::get('/', function () {
 
+    redirect()->route('posts.index');
 
-    return view('anasayfa', ['name' => 'James']);
     die;
     $task = new Posts;
     $task->post_title = 'ishak Walk the dog';
@@ -58,7 +58,7 @@ Route::get('/', function () {
 });
 
 Route::resource('companies', 'CompaniesController');
-Route::resource('employees', 'EmployeesController');
+
 
 
 // admin routes http://www.w3programmers.com/laravel-route-groups/

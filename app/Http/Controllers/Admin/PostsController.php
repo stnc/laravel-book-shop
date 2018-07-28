@@ -24,11 +24,22 @@ class PostsController extends Controller
 
     {
 
-        $Posts = AllPosts::orderBy('id','DESC')->paginate(5);
 
-        return view('PostCRUD.index',compact('Posts'))
 
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+
+        $category = $request->input('search');
+        if ($request->has('search')){
+             $Posts= AllPosts::with('comments')->whereHas('comments', function($q) use ($category){
+                //$q->where('CommentId',$category);
+                $q->where('comment_content','LIKE','%'.$category.'%');
+            })->paginate(5);
+
+
+            return view('PostCRUD.index',compact('Posts'))->with('i', ($request->input('page', 1) - 1) * 5);;
+        } else {
+            $Posts = AllPosts::orderBy('id','DESC')->paginate(5);
+            return view('PostCRUD.index',compact('Posts'))->with('i', ($request->input('page', 1) - 1) * 5);
+        }
 
     }
 
@@ -98,7 +109,7 @@ class PostsController extends Controller
 
      */
 
-    public function show($id)
+    public function show($id,Request $request)
 
     {
 
@@ -106,7 +117,15 @@ class PostsController extends Controller
         $tags =($Posts->tags()->get());
         $comments=($Posts->comments()->get());
 
+
+
+        //now get all user and services in one go without looping using eager loading
+        //In your foreach() loop, if you have 1000 users you will make 1000 queries
+
+
         return view('PostCRUD.show',compact('Posts','tags'));
+
+
 
     }
 
