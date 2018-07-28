@@ -51,19 +51,52 @@
     <div class="row">
 
         <div class="col-md-4 order-md-2 mb-4">
-
+            @if ($Posts->categories()->count() > 0)
             <ul>
                     @php
                    //  dd($Posts->categories[0]->name);
                     @endphp
 
-    <h5>            Bağlı olduğu kategoriler</h5>
+    <h5>            Bağlı olduğu kategoriler ({{$Posts->categories()->count()}})</h5>
                         @foreach ($Posts->categories as $cat)
                             <li>
                                     {{$cat->name}}
                             </li>
                         @endforeach
             </ul>
+
+            @endif
+
+                @if ($Posts->tags()->count() > 0)
+                    <ul>
+
+                        <h5>            Taglar  ({{$Posts->tags()->count()}})</h5>
+                        @foreach ($Posts->tags as $tag)
+                            <li>
+                                {{$tag->name}}
+                            </li>
+                        @endforeach
+                    </ul>
+
+                @endif
+
+                @php
+              //  dd($Posts->comments());
+                @endphp
+                @if ($Posts->comments()->count() > 0)
+                    <ul>
+
+                        <h5>            Yorumlar  ({{$Posts->comments()->count()}})</h5>
+                        @foreach ($Posts->comments as $comments)
+                            <li>
+                                {{$comments->comment_content}}
+                            </li>
+                        @endforeach
+                    </ul>
+
+                @endif
+
+                <img class="img-thumbnail img-responsive"  src="/uploads/{{$Posts->media_picture}}" alt="" class="img-responsive">
 
         </div>
 
@@ -99,7 +132,7 @@
                     <strong>MEdia:</strong>
 
                     {!! Form::file('media_picture', null, array('placeholder' => 'MEdia','class' => 'form-control','style'=>'height:100px')) !!}
-                    <img src="/uploads/{{ $Posts->media_picture}}" alt="">
+
                 </div>
 
             </div>

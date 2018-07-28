@@ -128,8 +128,8 @@ class PostsController extends Controller
     {
 
        // $Posts = AllPosts::find($id);
-        $Posts = AllPosts::find($id)->categories()->get();//reverse
-        $Posts = AllPosts::where ('id','=',$id)->with('categories')->first();;
+     //   $Posts = AllPosts::find($id)->categories()->get();//reverse
+        $Posts = AllPosts::where ('id','=',$id)->with('categories','comments','tags')->first();;
 
         return view('PostCRUD.edit',compact('Posts'));
 
