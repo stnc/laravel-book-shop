@@ -93,10 +93,14 @@ class PostsController extends Controller
 
         //  AllPosts::create($request->all());
         $task=  AllPosts::create($update_data);
-        // $task->Comments()->save($Comments);
-        $task->tags()->create([
-            'name' => $request->get('tags'),
-        ]);
+
+        $explode=explode(',',$request->get('tags'));
+            foreach ($explode as $exp){
+                $task->tags()->create([
+                    'name' => $exp,
+                ]);
+            }
+
 
 
 

@@ -27,4 +27,10 @@ class Posts extends Model
        /// return $this->hasOne('App\Model\PostsComments','posts_id','id');
         return $this->hasMany('App\Model\PostsComments','posts_id','id');
     }
+
+    public function user()
+    {
+
+       return $this->hasOne('App\Model\PostsComments','posts_id','id');
+    }
 }
