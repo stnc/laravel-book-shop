@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Posts as AllPosts ;
+use App\User ;
 use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
@@ -130,7 +132,11 @@ class PostsController extends Controller
         $Posts = AllPosts::find($id);
         $tags =($Posts->tags()->get());
         $comments=($Posts->comments()->get());
+         $user=$Posts->user()->pluck('id');
+         $userDe=UserDetail::find($user[0]);
+ // echo $user[0];
 
+dd($userDe);
 
 
         //now get all user and services in one go without looping using eager loading

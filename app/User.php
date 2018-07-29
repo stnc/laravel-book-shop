@@ -24,59 +24,29 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'phone', 'birth_date', 'email', 'password', 'type', 'cookie','ip',
+        'name', 'email'
     ];
 
-
-
-    public function sendedComments()
+/*
+    public function posts()
     {
-        return $this->hasMany('App\Comment', 'user_id');
+        return $this->belongsToMany('App\Model\Posts')
+            ->withTimestamps();
     }
 
-    public function sendedCommentsCount()
+*/
+    public function usersDetail()
     {
-        return $this->hasMany('App\Comment')
-            ->selectRaw('user_id, count(*) as count')
-            ->groupBy('user_id');
-    }
-
-
-
-    /**
-     * KUllanıcının  profiline bakanlar
-     */
-    public function displaying()
-    {
-        return $this->morphMany('App\Display', 'displayable');
+        return $this->hasOne('App\UserDetail','id','user_id');
     }
 
 
-    /**
-     * KUllanıcının  baktığı sayfalar
-     */
-    public function displays()
-    {
-        return $this->hasMany('App\Display', 'user_id');
-    }
+/*
 
-
-
-    public function ordersCount()
-    {
-        return $this->hasMany('App\Order')
-            ->selectRaw('user_id, count(*) as count')
-            ->groupBy('user_id');
-    }
-
-    public function orders()
-    {
-        return $this->hasMany('App\Order', 'user_id');
-    }
 
     public function addresses()
     {
         return $this->morphMany('App\Address', 'addressable');
     }
-
+*/
 }

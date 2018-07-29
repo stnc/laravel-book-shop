@@ -16,21 +16,23 @@ class Posts extends Model
 
     public function tags()
     {
-
         return $this->belongsToMany('App\Model\PostTags','posts_tags_relations', 'post_id','tag_id' )
             ->withTimestamps();
     }
 
     public function comments()
     {
-
        /// return $this->hasOne('App\Model\PostsComments','posts_id','id');
         return $this->hasMany('App\Model\PostsComments','posts_id','id');
     }
 
     public function user()
     {
+        return $this->hasOne('App\User','id','post_author');
+    }
 
-       return $this->hasOne('App\Model\PostsComments','posts_id','id');
+    public function userDetail()
+    {
+        return $this->hasOne('App\UserDetail','id','post_author');
     }
 }
