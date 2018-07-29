@@ -63,17 +63,15 @@ Route::resource('companies', 'CompaniesController');
 
 
 // admin routes http://www.w3programmers.com/laravel-route-groups/
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
-  /*  Route::get('get', [
-        'uses' => 'PostsController@index'
-    ]);
-*/
-    Route::resource('auth', 'AuthController');
+//https://www.devproblems.com/laravel-5-admin-middleware-is_admin-user-check/  admin middware
+Route::group(['middleware' => ['auth', 'admin'],'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+
+
+    //Route::resource('auth', 'AuthController');
  //  Route::auth();
     Route::resource('posts','PostsController');
 
-  //  Route::get('/admin', 'HomeController@admin')->middleware('is_admin')->name('admin');
 
 });
 Auth::routes();
