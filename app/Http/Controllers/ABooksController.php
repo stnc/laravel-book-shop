@@ -12,12 +12,12 @@ class ABooksController extends Controller
     {
 
 
-        $book = \App\A_books::find($id);
-        dd($book);
-         $upvotes = $book->likes;
-        echo  $upvotescount = $book->likes->count();
+        $books = \App\A_books::find($id);
 
+    //    $upvotes = $books->likes;
+    //    echo  $upvotescount = $books->likes->count();
 
+        return view('books.show', compact('books'));
 
     }
 
@@ -28,9 +28,9 @@ class ABooksController extends Controller
         $books = \App\A_books::create(['name' => 'Selman tunç','author_id' => $authors->id]);
         $upvote1 = new \App\A_book_author_like;
         $upvote2 = new \App\A_book_author_like;
-        // $upvote3 = new \App\A_book_author_like;
+
         $books->likes()->save($upvote1);
         $authors->likes()->save($upvote2);
-        //   $books->likes()->save($upvote3);
+
     }
 }
