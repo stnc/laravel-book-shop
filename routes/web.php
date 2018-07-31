@@ -19,10 +19,28 @@ use App\Posts;
 use App\PostsCategories;
 use App\PostTags;
 use App\PostsComments;
+use App\Books;
 
 Route::get('/', function () {
 
-    redirect()->route('posts.index');
+    $album = App\Album::find(1);
+    $upvotes = $album->upvotes;
+ echo    $upvotescount = $album->upvotes->count();
+
+    die;
+    $album = App\Album::create(['name' => 'More Life']);
+    $song = App\Song::create(['title' => 'Free smoke', 'album_id' => 1]);
+
+    $upvote1 = new App\Upvote;
+     $upvote2 = new App\Upvote;
+     $upvote3 = new App\Upvote;
+
+     $album->upvotes()->save($upvote1);
+     $song->upvotes()->save($upvote2);
+    $album->upvotes()->save($upvote3);
+
+
+
 
     die;
     $task = new Posts;
