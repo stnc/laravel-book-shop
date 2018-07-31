@@ -23,22 +23,21 @@ use App\Books;
 
 Route::get('/', function () {
 
+
+    $authors = App\A_authors::create(['name' => 'Free smoke']);
+    $books = App\A_books::create(['name' => 'Selman tunç','author_id' => $authors->id]);
+    $upvote1 = new App\A_book_author_like;
+    $upvote2 = new App\A_book_author_like;
+    $upvote3 = new App\A_book_author_like;
+    $books->likes()->save($upvote1);
+    $authors->likes()->save($upvote2);
+    $books->likes()->save($upvote3);
+
+
+    die();
     $album = App\Album::find(1);
     $upvotes = $album->upvotes;
- echo    $upvotescount = $album->upvotes->count();
-
-    die;
-    $album = App\Album::create(['name' => 'More Life']);
-    $song = App\Song::create(['title' => 'Free smoke', 'album_id' => 1]);
-
-    $upvote1 = new App\Upvote;
-     $upvote2 = new App\Upvote;
-     $upvote3 = new App\Upvote;
-
-     $album->upvotes()->save($upvote1);
-     $song->upvotes()->save($upvote2);
-    $album->upvotes()->save($upvote3);
-
+     $upvotescount = $album->upvotes->count();
 
 
 
