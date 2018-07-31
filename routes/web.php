@@ -91,6 +91,7 @@ Route::group(['middleware' => ['auth', 'admin'],'namespace' => 'Admin', 'prefix'
 
 
 });
+/*
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -104,3 +105,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+*/
+
+Route::get('/author/add', 'AAuthorsController@add')->name('author.show');
+Route::get('/author/{authur}', 'AAuthorsController@show')->name('author.show');
+Route::get('/books/{book}', 'ABooksController@show')->name('video.show');

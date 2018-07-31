@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AbookAuthurLike extends Controller
+class AbookAuthurLikeController extends Controller
 {
     //
 }
