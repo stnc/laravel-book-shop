@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Database\Eloquent\Relations\Relation;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //https://josephsilber.com/posts/2018/07/02/eloquent-polymorphic-relations-morph-map
+        Relation::morphMap([
+            'books' => 'App\A_books',
+            'authors' => 'App\A_authors',
+        ]);
     }
 
     /**

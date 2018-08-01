@@ -15,6 +15,11 @@
 //https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
 //https://martinbean.co.uk/blog/2014/07/04/re-using-controllers-for-admin-and-non-admin-routes-in-laravel/
 //https://itsolutionstuff.com/post/crud-create-read-update-delete-example-in-laravel-52-from-scratchexample.html
+
+//https://tighten.co/blog/extending-models-in-eloquent
+//morpmap kullanımı
+//https://laracasts.com/discuss/channels/eloquent/using-morphmap-on-more-than-one-polymorphic-relationship
+
 use App\Posts;
 use App\PostsCategories;
 use App\PostTags;
