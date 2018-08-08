@@ -84,3 +84,7 @@ php artisan key:generate
 
 2-
 php artisan config:cache
+
+Roadmap
+repositery pattern
+facades 
