@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //https://josephsilber.com/posts/2018/07/02/eloquent-polymorphic-relations-morph-map
+        //https://www.sitepoint.com/eloquents-polymorphic-relationships-explained/s
         Relation::morphMap([
             'books' => 'App\A_books',
             'authors' => 'App\A_authors',
