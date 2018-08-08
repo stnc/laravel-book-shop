@@ -3,8 +3,6 @@
 Vue 2.5 + Laravel 5.5 + Axios CRUD example app
 
 
-<img src="demo.gif" width="416">
-
 ### Installation
 
 1. Clone repo
