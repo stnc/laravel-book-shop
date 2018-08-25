@@ -2,6 +2,9 @@
 
 @section('content')
 
+
+    <task></task>
+    <example></example>
     <div class="container">
 
         @if(\Session::has('error'))
