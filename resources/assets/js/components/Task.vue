@@ -1,4 +1,5 @@
 <template>
+<div>
 
     <div class="container">
 
@@ -231,7 +232,7 @@
 
 
     </div>
-
+</div>
 </template>
 
 
@@ -382,7 +383,7 @@
 
             {
 
-                axios.get('http://127.0.0.1:8000/task')
+                axios.get('http://blog.test/task')
 
                     .then(response => {
 
