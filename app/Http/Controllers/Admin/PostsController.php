@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Posts as AllPosts ;
 use App\User ;
 use Illuminate\Support\Facades\Storage;
-
+use Yajra\Datatables\Datatables;
 class PostsController extends Controller
 {
     //https://www.kahramaner.com/yazilim/query-builder-methods/
@@ -40,7 +40,6 @@ class PostsController extends Controller
         }
 
     }
-
     public function index()
     {
         return Datatables::of(User::query())->make(true);

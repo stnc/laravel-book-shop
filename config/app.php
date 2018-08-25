@@ -177,7 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
+        yajra\Datatables\DatatablesServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
     ],
@@ -230,7 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Datatables' => yajra\Datatables\Datatables::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
