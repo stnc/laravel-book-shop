@@ -7,5 +7,6 @@
         <li>{{ $like->body }}</li>
     @endforeach
 </ul>
-
+<task></task>
+<example></example>
 <a href="http://blog.test/author/11">author</a>
