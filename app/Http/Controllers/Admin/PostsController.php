@@ -142,10 +142,7 @@ class PostsController extends Controller
         //now get all user and services in one go without looping using eager loading
         //In your foreach() loop, if you have 1000 users you will make 1000 queries
 
-
         return view('PostCRUD.show',compact('Posts','tags'));
-
-
 
     }
 
