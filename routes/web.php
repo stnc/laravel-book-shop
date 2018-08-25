@@ -92,7 +92,7 @@ die;
 // admin routes http://www.w3programmers.com/laravel-route-groups/
 
 //https://www.devproblems.com/laravel-5-admin-middleware-is_admin-user-check/  admin middware
-Route::group(['middleware' => ['auth', 'admin'],'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 
     //Route::resource('auth', 'AuthController');
@@ -120,5 +120,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/author/add', 'AAuthorsController@add')->name('author.show');
 Route::get('/author/{authur}', 'AAuthorsController@show')->name('author.show');
 Route::get('/books/{book}', 'ABooksController@show')->name('video.show');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/task', 'TaskController');

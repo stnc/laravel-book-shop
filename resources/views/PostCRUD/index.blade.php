@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <task></task>
+
     <div class="container">
     <div class="row">
 

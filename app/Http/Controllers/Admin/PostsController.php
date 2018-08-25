@@ -136,7 +136,7 @@ class PostsController extends Controller
          $userDe=UserDetail::find($user[0]);
  // echo $user[0];
 
-dd($userDe);
+//dd($userDe);
 
 
         //now get all user and services in one go without looping using eager loading
