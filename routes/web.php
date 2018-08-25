@@ -124,3 +124,6 @@ Route::get('/books/{book}', 'ABooksController@show')->name('video.show');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/task', 'TaskController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
