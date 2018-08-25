@@ -100,7 +100,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::resource('posts','PostsController');
 
 
+
 });
+Route::get('posts/getdata', 'HomeController@getPosts')->name('posts/getdata');
 /*
 Auth::routes();
 

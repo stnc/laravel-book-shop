@@ -42,8 +42,10 @@ class PostsController extends Controller
     }
     public function index()
     {
-        return Datatables::of(User::query())->make(true);
+        return view('PostCRUD.index');
     }
+
+
 
     /**
 
