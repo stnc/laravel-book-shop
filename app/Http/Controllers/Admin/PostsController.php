@@ -22,13 +22,9 @@ class PostsController extends Controller
 
      */
 //https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
-    public function index(Request $request)
+    public function indexOld(Request $request)
 
     {
-
-
-
-
         $category = $request->input('search');
         if ($request->has('search')){
              $Posts= AllPosts::with('comments')->whereHas('comments', function($q) use ($category){
@@ -45,6 +41,10 @@ class PostsController extends Controller
 
     }
 
+    public function index()
+    {
+        return Datatables::of(User::query())->make(true);
+    }
 
     /**
 
