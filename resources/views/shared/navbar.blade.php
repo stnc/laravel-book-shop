@@ -34,7 +34,7 @@
 
 
                 <a href="#" style="color: #fff"  role="button" aria-expanded="false">
-                    {{ Auth::user()->name }}
+
                 </a>
 
 
