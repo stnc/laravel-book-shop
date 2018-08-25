@@ -59,7 +59,7 @@ php artisan tinker
     
 2. Use factory script
 ````
-factory(App\Crud::class, 3)->create();
+factory(App\Task::class, 3)->create();
 ````
 
 

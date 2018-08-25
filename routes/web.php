@@ -29,6 +29,12 @@ use App\Books;
 Route::get('/', function () {
 
 
+echo '<a href="http://blog.test//author/11">yazara git</a>
+<br>
+<a href="http://blog.test//author/add">yazara ekle</a>
+';
+die;
+
     $authors = App\A_authors::create(['name' => 'Free smoke']);
     $books = App\A_books::create(['name' => 'Selman tunç','author_id' => $authors->id]);
     $upvote1 = new App\A_book_author_like;
@@ -80,7 +86,6 @@ Route::get('/', function () {
 
 });
 
-Route::resource('companies', 'CompaniesController');
 
 
 
@@ -115,3 +120,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/author/add', 'AAuthorsController@add')->name('author.show');
 Route::get('/author/{authur}', 'AAuthorsController@show')->name('author.show');
 Route::get('/books/{book}', 'ABooksController@show')->name('video.show');
+
+Route::resource('/task', 'TaskController');

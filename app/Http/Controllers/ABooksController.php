@@ -24,6 +24,7 @@ class ABooksController extends Controller
 
     public function add()
     {
+        echo 'page added';
         $authors = \App\A_authors::create(['name' => 'Free smoke']);
         $books = \App\A_books::create(['name' => 'Selman tunç','author_id' => $authors->id]);
         $upvote1 = new \App\A_book_author_like;

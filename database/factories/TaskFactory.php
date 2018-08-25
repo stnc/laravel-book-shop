@@ -12,9 +12,10 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Employee::class, function (Faker\Generator $faker) {
+$factory->define(App\Task::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
-        'email' => $faker->safeEmail,
+        'description' => $faker->word,
+        'user_id' => 1,
     ];
 });
