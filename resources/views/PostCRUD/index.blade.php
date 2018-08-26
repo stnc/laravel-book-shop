@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-@section('style')
-    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
-@endsection
 
 @section('content')
     <div class="container">
@@ -18,6 +15,7 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                         </table>
@@ -41,6 +39,7 @@
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
                     {data: 'email', name: 'email'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });
         });

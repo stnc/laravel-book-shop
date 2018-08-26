@@ -30,7 +30,12 @@ class HomeController extends Controller
 
     public function getPosts()
     {
-        return \DataTables::of(User::query())->make(true);
+        return \DataTables::of(User::query())
+            ->addColumn('action', function ($user) {
+                return '<a href="#edit-'.$user->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })
+            ->editColumn('id', 'ID: {{$id}}')
+            ->make(true);
     }
     /*
 public function someAdminStuff(Request $request)
