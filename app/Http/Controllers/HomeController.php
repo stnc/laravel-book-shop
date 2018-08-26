@@ -32,7 +32,10 @@ class HomeController extends Controller
     {
         return \DataTables::of(User::query())
             ->addColumn('action', function ($user) {
-                return '<a href="#edit-'.$user->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                return '<a href="#edit-'.$user->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>'
+
+
+                    ;
             })
             ->editColumn('id', 'ID: {{$id}}')
             ->make(true);

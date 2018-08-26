@@ -22,7 +22,7 @@ class PostsController extends Controller
 
      */
 //https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
-    public function indexOld(Request $request)
+    public function index(Request $request)
 
     {
         $category = $request->input('search');
@@ -40,7 +40,7 @@ class PostsController extends Controller
         }
 
     }
-    public function index()
+    public function index2()
     {
         return view('PostCRUD.index');
     }
