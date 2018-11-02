@@ -1,4 +1,4 @@
-# vue-laravel-crud
+# vue laravel crud
 
 Vue 2.5 + Laravel 5.5 + Axios CRUD example app
 
