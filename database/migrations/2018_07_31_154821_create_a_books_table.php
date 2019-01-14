@@ -17,10 +17,9 @@ class CreateABooksTable extends Migration
             $table->increments('id');
             $table->string('name');
 
-            $table->integer('author_id')->unsigned()->index();
-
-
-            $table->foreign('author_id')->references('id')->on('a_authors')->onDelete('cascade');
+            $table->integer('puplishing_house_id');
+            $table->text('content')->nullable();
+         //  $table->foreign('puplishing_house_id')->references('id')->on('puplishing_house')->onDelete('cascade');
             $table->timestamps();
         });
     }

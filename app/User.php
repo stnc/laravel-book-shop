@@ -27,26 +27,13 @@ class User extends Authenticatable
         'name', 'email'
     ];
 
-/*
-    public function posts()
-    {
-        return $this->belongsToMany('App\Model\Posts')
-            ->withTimestamps();
-    }
 
-*/
+
     public function usersDetail()
     {
-        return $this->hasOne('App\UserDetail','id','user_id');
+        return $this->hasOne('App\UserDetail','user_id');
     }
 
 
-/*
 
-
-    public function addresses()
-    {
-        return $this->morphMany('App\Address', 'addressable');
-    }
-*/
 }

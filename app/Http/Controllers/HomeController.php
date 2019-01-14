@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User ;
+
 class HomeController extends Controller
 {
     /**
@@ -21,31 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //$request->user()->authorizeRoles(['employee', 'manager']);
         return view('home');
     }
-
-
-    public function getPosts()
-    {
-        return \DataTables::of(User::query())
-            ->addColumn('action', function ($user) {
-                return '<a href="#edit-'.$user->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>'
-
-
-                    ;
-            })
-            ->editColumn('id', 'ID: {{$id}}')
-            ->make(true);
-    }
-    /*
-public function someAdminStuff(Request $request)
-{
-  $request->user()->authorizeRoles('manager');
-
-  return view(‘some.view’);
-}
-*/
 }

@@ -8,7 +8,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <script src="/js/bootstrap.min.js"></script>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <style>
@@ -67,5 +67,6 @@
 <body>
 @include('shared.navbar')
 @yield('content')
+@include('shared.footer')
 </body>
 </html>

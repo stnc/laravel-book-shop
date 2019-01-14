@@ -10,7 +10,7 @@ class Posts extends Model
     //  protected $fillable=['name','description'];
     public function categories()
     {
-        return $this->belongsToMany('App\Model\PostsCategories', 'posts_categories_relations',  'post_id','category_id')
+        return $this->belongsToMany('App\Model\Categories', 'posts_categories_relations',  'post_id','category_id')
             ->withTimestamps();
     }
 

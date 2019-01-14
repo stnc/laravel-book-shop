@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Company::class, 10)->create()->each(function ($company) {
-            $company->employees()->saveMany(factory(Employee::class, rand(2,5))->create());
-        });
+        $this->call(UserDetailSeeder::class);
+       // $this->call(UsersTableSeeder::class);
+
     }
 }

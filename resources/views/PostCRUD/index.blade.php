@@ -1,49 +1,88 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
 
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Data Table Demo</div>
 
-                    <div class="panel-body">
-                        <table class="table table-hover table-bordered table-striped datatable" style="width:100%">
-                            <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
+    <div class="container">
+    <div class="row">
+
+        <div class="col-lg-12 margin-tb">
+
+            <div class="pull-left">
+
+                <h2>Items CRUD</h2>
+
             </div>
+
+            <div class="pull-right">
+
+                <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New Item</a>
+
+            </div>
+
         </div>
+
     </div>
 
 
+    @if ($message = Session::get('success'))
+
+        <div class="alert alert-success">
+
+            <p>{{ $message }}</p>
+
+        </div>
+
+    @endif
+
+
+    <table class="table table-bordered">
+
+        <tr>
+
+            <th>No</th>
+
+            <th>Title</th>
+
+            <th>Description</th>
+
+            <th width="280px">Action</th>
+
+        </tr>
+
+        @foreach ($Posts as $key => $item)
+
+            <tr>
+
+                <td>{{ ++$i }}</td>
+
+                <td>{{ $item->post_title }}</td>
+
+                <td>{{ $item->post_content }}</td>
+
+                <td>
+
+                    <a class="btn btn-info" href="{{ route('posts.show',$item->id) }}">Show</a>
+
+                    <a class="btn btn-primary" href="{{ route('posts.edit',$item->id) }}">Edit</a>
+
+                    {!! Form::open(['method' => 'DELETE','route' => ['posts.destroy', $item->id],'style'=>'display:inline']) !!}
+
+                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+
+                    {!! Form::close() !!}
+
+                </td>
+
+            </tr>
+
+        @endforeach
+
+    </table>
+
+
+    {!! $Posts->render() !!}
+
+    </div>
 @endsection
-
-
-
-@push('scripts')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.datatable').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{{ route('posts/getdata') }}',
-                columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'name', name: 'name'},
-                    {data: 'email', name: 'email'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
-            });
-        });
-    </script>
-@endpush

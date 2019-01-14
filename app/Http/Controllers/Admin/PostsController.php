@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Posts as AllPosts ;
 use App\User ;
 use Illuminate\Support\Facades\Storage;
-use Yajra\Datatables\Datatables;
+
 class PostsController extends Controller
 {
     //https://www.kahramaner.com/yazilim/query-builder-methods/
@@ -25,6 +25,10 @@ class PostsController extends Controller
     public function index(Request $request)
 
     {
+
+
+
+
         $category = $request->input('search');
         if ($request->has('search')){
              $Posts= AllPosts::with('comments')->whereHas('comments', function($q) use ($category){
@@ -40,11 +44,6 @@ class PostsController extends Controller
         }
 
     }
-    public function index2()
-    {
-        return view('PostCRUD.index');
-    }
-
 
 
     /**
@@ -137,19 +136,20 @@ class PostsController extends Controller
          $userDe=UserDetail::find($user[0]);
  // echo $user[0];
 
-//dd($userDe);
+dd($userDe);
 
 
         //now get all user and services in one go without looping using eager loading
         //In your foreach() loop, if you have 1000 users you will make 1000 queries
 
+
         return view('PostCRUD.show',compact('Posts','tags'));
+
+
 
     }
 
 
-
-    
     /**
 
      * Show the form for editing the specified resource.
