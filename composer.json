@@ -9,6 +9,7 @@
 
         "filp/whoops": "^2.3",
         "laravel/framework": "5.5.*",
+
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4"
     },
