@@ -19,6 +19,8 @@ class A_authors extends Model
         return $this->hasMany(AuthorsComments::class, 'author_id');
     }
 
+
+
     public function likes()
     {
         return $this->morphMany(A_book_author_like::class, 'liketable');
