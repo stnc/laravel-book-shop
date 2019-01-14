@@ -56,11 +56,6 @@ npm run prod
 ````
 php artisan tinker
 ````
-    
-2. Use factory script
-````
-factory(App\Task::class, 3)->create();
-````
 
 
 
