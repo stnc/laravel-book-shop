@@ -1,4 +1,4 @@
-# vue laravel crud
+# laravel book seller ecommerce tutorials
 
 Vue 2.5 + Laravel 5.5 + Axios CRUD example app
 
@@ -10,7 +10,7 @@ Vue 2.5 + Laravel 5.5 + Axios CRUD example app
 2. Change to directory
 
 ````
-cd vue-laravel-crud
+laravel-crud-book seller ecommerce 
 ````   
 
 3. Install dependencies
@@ -64,11 +64,10 @@ factory(App\Task::class, 3)->create();
 
 
 
-Step 1= BLOG
+Step 1= Ecommerce 
 
-Step 2 =VUE JS
 
-STEP 3=REACT JS
+STEP =REACT JS (comming soon )
 
 
 PROBLEMS 
