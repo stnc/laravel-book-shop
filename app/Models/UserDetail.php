@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +16,7 @@ class UserDetail extends Authenticatable
 
     public function user()
     {
-        return $this->belongsTo('App\User')->withTimestamps();
+        return $this->belongsTo(User::class)->withTimestamps();
     }
 
 

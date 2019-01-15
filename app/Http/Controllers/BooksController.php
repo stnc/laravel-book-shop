@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\A_books;
+use App\Models\User;
+use App\Models\Comments;
 class BooksController extends Controller
 {
 
@@ -15,18 +18,18 @@ class BooksController extends Controller
         //https://startbootstrap.com/template-categories/ecommerce/
 //https://www.kitapyurdu.com/yazar/stefan-zweig/3602.html
       //  DB::enableQueryLog();
-        $books= \App\A_books::find($id);
+        $books= A_books::find($id);
 
         $toplamBegenilme = $books->likes->count();
 
         $tags = collect($books->tags)->implode('name', ',');
-        $userDetails= \App\User::find(1);
+        $userDetails= User::find(1);
 
         $userDetail=  $userDetails->usersDetail;
         $comments=  $books->comments;
 
         $authorsID=$books->authors->pluck('id');
-        $commentsAuthor=   \App\Comments::whereIn("commentable_id",$authorsID)->where('commentable_type', 'authors')->get();
+        $commentsAuthor=   Comments::whereIn("commentable_id",$authorsID)->where('commentable_type', 'authors')->get();
 //        dd($CommentsAuthor);
 //        $query = DB::getQueryLog();
       ////   print_r($query);

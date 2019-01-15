@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comments extends Model
+class A_book_author_like extends Model
 {
-    public function commentable()
+    public function liketable()
     {
         return $this->morphTo();
     }

@@ -52,7 +52,7 @@ die;
 
 
 
-    $task = new App\Model\Posts;
+    $task = new App\Models\Posts;
     $task->post_title = 'ishak Walk the dog';
     $task->post_content = 'ishak Walk Barky the Mutt';
     $task->post_author = '1';
@@ -60,10 +60,10 @@ die;
     $task->post_order = '1';
     $task->save();
 
-    $category = new App\Model\Categories(['name' => 'ishak selman cat']);
+    $category = new App\Models\Categories(['name' => 'ishak selman cat']);
 
 
-    $tags = new App\Model\PostTags(['name' => 'ishak new tag']);
+    $tags = new App\Models\PostTags(['name' => 'ishak new tag']);
     // $Comments = new PostsComments(['comment_content' => 'yeni yorumum']);
 
 
@@ -71,11 +71,11 @@ die;
     // $task->Comments()->save($Comments);
     $task->tags()->save($tags);
 
-    $list = App\Model\Posts::find(1);
+    $list = App\Models\Posts::find(1);
     $categories = [
-        new App\Model\Categories(['name' => 'Vacation']),
-        new App\Model\Categories(['name' => 'Tropical']),
-        new App\Model\Categories(['name' => 'Leisure']),
+        new App\Models\Categories(['name' => 'Vacation']),
+        new App\Models\Categories(['name' => 'Tropical']),
+        new App\Models\Categories(['name' => 'Leisure']),
     ];
 
     $list->categories()->saveMany($categories);

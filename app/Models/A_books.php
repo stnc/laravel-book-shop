@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 
-use App\Model\Tag ;
+use App\Models\Tag ;
 use Illuminate\Database\Eloquent\Model;
 
 class A_books extends Model
