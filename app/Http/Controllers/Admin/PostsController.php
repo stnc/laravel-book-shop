@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Posts as AllPosts ;
+use App\Models\Posts as AllPosts ;
 use App\User ;
 use Illuminate\Support\Facades\Storage;
 
