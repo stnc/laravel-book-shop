@@ -1,6 +1,6 @@
 # laravel book seller ecommerce tutorials
 
-Vue 2.5 + Laravel 5.5 + Axios CRUD example app
+Laravel 5.7 
 
 
 ### Installation
