@@ -1,40 +1,82 @@
-laravel book seller ecommerce tutorials
+# laravel book seller ecommerce tutorials
+
 Vue 2.5 + Laravel 5.5 + Axios CRUD example app
 
-Installation
-Clone repo
 
-Change to directory
+### Installation
 
+1. Clone repo
+
+2. Change to directory
+
+````
 laravel-crud-book seller ecommerce 
-Install dependencies
+````   
+
+3. Install dependencies
+
+````
 composer install
-Copy .env file
+````
+
+4. Copy .env file
+
+```
 cp .env.example .env
-Modify DB_* value in .env with your database config.
+```
 
-Generate application key:
+5. Modify `DB_*` value in `.env` with your database config.
 
+6. Generate application key:
+
+````
 php artisan key:generate
-Migrate
+````
+
+7. Migrate
+````
 php artisan migrate
-Install Node modules
+````
+
+8. Install Node modules
+````
 npm install
-Build
+````
+
+9. Build
+
+````
 npm run prod
-Dummy Data
-Open Tinker
+````
+
+### Dummy Data
+
+1. Open Tinker
+
+````
 php artisan tinker
-Step 1= Ecommerce
+````
+
+
+
+Step 1= Ecommerce 
+
 
 STEP =REACT JS (comming soon )
 
-PROBLEMS
+
+PROBLEMS 
+
 
 laravel The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths.
 
-In my case, I have run these two commands and it works fine. 1- php artisan key:generate
+In my case, I have run these two commands and it works fine.
+1-
+php artisan key:generate
 
-2- php artisan config:cache
+2-
+php artisan config:cache
 
-Roadmap repositery pattern facades
+Roadmap
+repositery pattern
+facades 
