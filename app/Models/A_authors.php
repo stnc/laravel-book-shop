@@ -14,11 +14,11 @@ class A_authors extends Model
         return $this->hasMany(A_books::class, 'authors_id');
     }
 
+
     public function comments()
     {
-        return $this->hasMany(AuthorsComments::class, 'author_id');
+        return $this->morphMany(Comments::class, 'commentable');
     }
-
 
 
     public function likes()
