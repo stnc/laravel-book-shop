@@ -1,5 +1,7 @@
 # laravel book seller ecommerce tutorials
 
+Laravel 5.7 
+
 
 ### Installation
 
@@ -9,33 +11,66 @@
 
 ````
 laravel-crud-book seller ecommerce 
-<<<<<<< HEAD
+````   
 
-# Install dependencies
+3. Install dependencies
 
+````
 composer install
+````
 
-Copy .env file
+4. Copy .env file
 
+```
 cp .env.example .env
+```
 
-Modify DB_* value in .env with your database config.
+5. Modify `DB_*` value in `.env` with your database config.
 
+6. Generate application key:
 
-# Migrate
+````
+php artisan key:generate
+````
 
+7. Migrate
+````
 php artisan migrate
+````
+
+8. Install Node modules
+````
+npm install
+````
+
+9. Build
+
+````
+npm run prod
+````
+
+### Dummy Data
+
+1. Open Tinker
+
+````
+php artisan tinker
+````
 
 
-php artisan migrate:refresh
-
-# Dummy Data
+Step 1= Ecommerce 
 
 
+STEP =REACT JS (comming soon )
 
-# PROBLEMS
+
+##PROBLEMS 
+
 laravel The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths.
 
+In my case, I have run these two commands and it works fine.
 
-php artisan config:cache
+1-php artisan key:generate
+
+2-php artisan config:cache
 
