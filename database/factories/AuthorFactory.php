@@ -16,6 +16,6 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\A_authors::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'info' => $faker->word,
+        'info' => $faker->text(1000),
     ];
 });

@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      // $this->call(UserTableSeeder::class);
        Eloquent::unguard();
 
        // Ask for db migration refresh, default is no
@@ -26,7 +25,18 @@ class DatabaseSeeder extends Seeder
        $this->call(AuthorTableSeeder::class);
 
 
+       factory(App\Models\User::class, 10)->create()->each(function ($users) {
+        // Seed the relation with 5 userdetal
+        $UserDetail = factory(App\Models\UserDetail::class, 1)->make();
+        $users->usersDetail()->saveMany($UserDetail);
+    });
+
+
        $this->command->info("Database seeded.");
+
+
+
+
 
        // Re Guard model
        Eloquent::reguard();
