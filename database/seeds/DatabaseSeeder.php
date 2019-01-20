@@ -11,31 +11,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       Eloquent::unguard();
+        Eloquent::unguard();
 
        // Ask for db migration refresh, default is no
-       if ($this->command->confirm('Do you wish to refresh migration before seeding, it will clear all old data ?')) {
+        if ($this->command->confirm('Do you wish to refresh migration before seeding, it will clear all old data ?')) {
 
            // Call the php artisan migrate:fresh using Artisan
           // $this->command->call('migrate:fresh');
 
-           $this->command->line("Database cleared.");
-       }
+            $this->command->line("Database cleared.");
+        }
 
-       $this->call(AuthorTableSeeder::class);
+        $this->call(AuthorTableSeeder::class);
+        $this->call(BooksTableSeeder::class);
+        $this->call(UserDetailTableSeeder::class);
+        $this->call(BooksAuthorsLikeTableSeeder::class);
+        $this->call(TaggasblesTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
 
-
-       factory(App\Models\User::class, 10)->create()->each(function ($users) {
-        // Seed the relation with 5 userdetal
-        $UserDetail = factory(App\Models\UserDetail::class, 1)->make();
-        $users->usersDetail()->saveMany($UserDetail);
-    });
-
-
-       $this->command->info("Database seeded.");
+        $this->command->info("Database seeded.");
 
 
        // Re Guard model
-       Eloquent::reguard();
+        Eloquent::reguard();
     }
 }

@@ -17,7 +17,7 @@ class AuthorTableSeeder extends Seeder
         $this->command->info("Creating {$count} authors.");
 
         // Create the Genre
-        $authors= factory(App\Models\A_authors::class, $count)->create();
+        $dump= factory(App\Models\A_authors::class, $count)->create();
 
         $this->command->info('Authors Created!');
     }

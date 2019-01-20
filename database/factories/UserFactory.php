@@ -31,5 +31,6 @@ $factory->define(App\Models\UserDetail::class, function (Faker $faker) {
         'lastname' => $faker->lastName,
         'phone' => $faker->phoneNumber,
         'website' => $faker->url,
+   
     ];
 });
