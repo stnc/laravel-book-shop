@@ -27,7 +27,7 @@
             <div class="col-lg-9">
 
                 <div class="card mt-4">
-                    <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                    <img class="card-img-top img-fluid" src="/uploads/700x400.png" alt="">
                     <div class="card-body">
                         <h3 class="card-title">{{ $authors->name }}</h3>
 

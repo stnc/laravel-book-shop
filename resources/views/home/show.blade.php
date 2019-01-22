@@ -57,7 +57,7 @@
                     @foreach ($books as $book)
                     <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                              <a href="#"><img class="card-img-top" src="/uploads/700x400.png" alt=""></a>
                               <div class="card-body">
                                 <h4 class="card-title">
                                   <a href="/book/{{ $book->id }}">{{ $book->name }}</a>
