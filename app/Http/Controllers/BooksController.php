@@ -19,6 +19,7 @@ class BooksController extends Controller
 
         $toplamBegenilme = $books->likes->count();
 
+   //   dd( $books->Puplisher[0]->name);
         $tags = collect($books->tags)->implode('name', ',');
         $userDetails = User::find(1);
 

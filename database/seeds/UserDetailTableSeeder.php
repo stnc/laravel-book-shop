@@ -11,8 +11,7 @@ class UserDetailTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\User::class, 10)->create()->each(function ($users) {
-            // Seed the relation with 5 userdetal
+        factory(App\Models\User::class, 3)->create()->each(function ($users) {
                 $UserDetail = factory(App\Models\UserDetail::class, 1)->make();
                 $users->usersDetail()->saveMany($UserDetail);
             });

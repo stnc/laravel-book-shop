@@ -22,12 +22,18 @@ class DatabaseSeeder extends Seeder
             $this->command->line("Database cleared.");
         }
 
-        $this->call(AuthorTableSeeder::class);
-        $this->call(BooksTableSeeder::class);
+        //$this->call(AuthorTableSeeder::class);
+       // $this->call(BooksTableSeeder::class);
+
+        $this->call(BookAuthorRelationTableSeeder::class);
         $this->call(UserDetailTableSeeder::class);
         $this->call(BooksAuthorsLikeTableSeeder::class);
         $this->call(TaggasblesTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
+        $this->call(CategoriesBookTableSeeder::class);
+        $this->call(CategoriesBookRelationTableSeeder::class);
+        $this->call(PuplishingHouseTableSeeder::class);
+        $this->call(BookPuplisherRelationsTableSeeder::class);
 
         $this->command->info("Database seeded.");
 

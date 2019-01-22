@@ -26,66 +26,7 @@ use App\PostTags;
 use App\PostsComments;
 use App\Books;
 
-Route::get('/', function () {
-echo "
-<a href='/author/add' > yazar ekle </a>
-<br>
-<a href='/author/15' > yazar git </a>
-<br>
-<a href='/book/15' > kitap git </a>
-
-
-";
-die;
-
-   // $authors = App\A_authors::create(['name' => 'Selman tunç']);
-    $books = App\A_books::create(['name' => ' gomülü şamdan ','author_id' => 15]);
-    $upvote1 = new App\A_book_author_like;
-    $upvote2 = new App\A_book_author_like;
-    $upvote3 = new App\A_book_author_like;
-    $books->likes()->save($upvote1);
-//    $authors->likes()->save($upvote2);
-    $books->likes()->save($upvote3);
-
-
-die;
-
-
-
-    $task = new App\Models\Posts;
-    $task->post_title = 'ishak Walk the dog';
-    $task->post_content = 'ishak Walk Barky the Mutt';
-    $task->post_author = '1';
-    $task->post_status = '1';
-    $task->post_order = '1';
-    $task->save();
-
-    $category = new App\Models\Categories(['name' => 'ishak selman cat']);
-
-
-    $tags = new App\Models\PostTags(['name' => 'ishak new tag']);
-    // $Comments = new PostsComments(['comment_content' => 'yeni yorumum']);
-
-
-    $task->categories()->save($category);
-    // $task->Comments()->save($Comments);
-    $task->tags()->save($tags);
-
-    $list = App\Models\Posts::find(1);
-    $categories = [
-        new App\Models\Categories(['name' => 'Vacation']),
-        new App\Models\Categories(['name' => 'Tropical']),
-        new App\Models\Categories(['name' => 'Leisure']),
-    ];
-
-    $list->categories()->saveMany($categories);
-
-    $list->categories()->attach([7, 6]);//kategoriye 7 ve 6 da bağlıyor
-//    $list->categories()->attach(5);
-
-});
-
-Route::resource('companies', 'CompaniesController');
+Route::get('/','HomeController@index')->name('home');
 
 
 
@@ -121,43 +62,3 @@ Route::get('/author/add', 'AuthorsController@add')->name('author.show');
 Route::get('/author/{authur}', 'AuthorsController@show')->name('author.show');
 Route::get('/book/{bookID}', 'BooksController@show')->name('book.show');
 Route::get('/puplisher/{puplish}', 'PuplisherController@show')->name('video.show');
-
-//todo : comment kaldı sadece
-
-Route::get('/tagekle', function () {
-
-
-    $post = App\A_books::find(15);
-    $tag = new App\Tag;
-    $tag->name = "ItSolutionStuff.com book";
-    $post->tags()->save($tag);
-
-    $v = App\A_authors::find(15);
-    $tag = new App\Tag;
-    $tag->name = "ItSolutionStuff.com author";
-    $v->tags()->save($tag);
-
-die();
-/*
-    $post = App\A_books::find(15);
-    $tag1 =     new App\Tag;
-    $tag1->name = "ItSolutionStuff.com";
-    $tag2 =   new App\Tag;
-    $tag2->name = "ItSolutionStuff.com 2";
-    $post->tags()->saveMany([$tag1, $tag2]);
-*/
-
-
-/*
-    $post =App\A_books::find(15);
-    $tag1 =  App\Tag::find(1);
-    $tag2 =  App\Tag::find(2);
-    $post->tags()->attach([$tag1->id, $tag2->id]);
-*/
-
-    $post = App\A_books::find(15);
-    $tag1 = App\Tag::find(1);
-    $tag2 = App\Tag::find(2);
-    $post->tags()->sync([$tag1->id, $tag2->id]);
-
-});

@@ -15,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //https://josephsilber.com/posts/2018/07/02/eloquent-polymorphic-relations-morph-map
         Relation::morphMap([
-            'books' => 'App\A_books',
-            'authors' => 'App\A_authors',
+            'books' => 'App\Models\A_books',
+            'authors' => 'App\Models\A_authors',
         ]);
     }
 

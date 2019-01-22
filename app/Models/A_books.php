@@ -37,8 +37,10 @@ class A_books extends Model
 
     public function puplisher()
     {
-        return $this->belongsTo(Puplisher::class, 'puplishing_house_id','id');
+       // return $this->belongsTo(Puplisher::class, 'puplishing_house_id','id');
        // return $this->hasOne(BookPuplisherRelation::class, 'book_id','id');
+      return $this->belongsToMany(Puplisher::class, 'books_puplisher_relations',  'book_id','puplisher_id')
+       ->withTimestamps();
     }
 
 
@@ -47,8 +49,5 @@ class A_books extends Model
         return $this->belongsToMany(Categories::class, 'categories_book_relations',  'book_id','category_id')
             ->withTimestamps();
     }
-
-
-
 
 }

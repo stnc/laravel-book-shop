@@ -28,10 +28,12 @@
                     @endforeach
 
                     Yayıncı Firma
-                    <h3 class="card-title">{{ $books->puplisher->name }}</h3>
+                    <h3 class="card-title">
+                            {{     $books->Puplisher[0]->name  ?? 'default' }}
+                    </h3>
 
 
-                   <strong> Ekleyen kullancı detay</strong>
+                   <strong> Ekleyen kullancı </strong>
                     <h6 class="card-title">{{ $userDetail->name ." ". $userDetail->lastname}} </h6>
 
                 </div>

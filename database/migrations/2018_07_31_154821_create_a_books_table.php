@@ -17,9 +17,10 @@ class CreateABooksTable extends Migration
             $table->increments('id');
             $table->string('name');
 
-            $table->integer('puplishing_house_id');
+           // $table->integer('puplishing_house_id');
+          //  $table->foreign('puplishing_house_id')->references('id')->on('puplishing_house')->onDelete('cascade');
+
             $table->text('content')->nullable();
-         //  $table->foreign('puplishing_house_id')->references('id')->on('puplishing_house')->onDelete('cascade');
             $table->timestamps();
         });
     }

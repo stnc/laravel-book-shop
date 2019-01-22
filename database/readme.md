@@ -4,6 +4,11 @@ php artisan make:seeder UserTableSeeder
 php artisan make:seeder BooksTableSeeder
 php artisan make:seeder BooksAuthorsLikeTableSeeder
 php artisan make:seeder TagsTableSeeder
+php artisan make:seeder CategoriesBookTableSeeder
+php artisan make:seeder CategoriesBookRelationTableSeeder
+php artisan make:seeder BookAuthorRelationTableSeeder
+php artisan make:seeder CategoriesBookRelationTableSeeder
+php artisan make:seeder  PuplishingHouseTableSeeder
 
 
 php artisan make:factory CommentsFactory --model=Models\Comments\
@@ -25,3 +30,10 @@ php artisan db:seed
 php artisan db:seed --class=UserTableSeeder
 php artisan db:seed --class=BooksAuthorsLikeTableSeeder
 php artisan db:seed --class=UserDetailTableSeeder
+php artisan db:seed --class=CategoriesBookTableSeeder
+php artisan db:seed --class=CategoriesBookRelationTableSeeder
+php artisan db:seed --class=BookAuthorRelationTableSeeder
+
+php artisan db:seed --class=PuplishingHouseTableSeeder
+php artisan db:seed --class=BookPuplisherRelationsTableSeeder
+
