@@ -13,11 +13,14 @@ class BookPuplisherRelationsTableSeeder extends Seeder
     {
 
 
-        $idLast = DB::table('puplishing_house')->pluck('id')->last();
-        $idfirst = DB::table('puplishing_house')->pluck('id')->first();
-        $rnd=rand($idfirst, $idLast);
 
-        factory(App\Models\A_books::class)->create()->each(function ($books) use  ($rnd){
+
+        factory(App\Models\A_books::class)->create()->each(function ($books) {
+
+            $idLast = DB::table('puplishing_house')->pluck('id')->last();
+            $idfirst = DB::table('puplishing_house')->pluck('id')->first();
+            $rnd=rand($idfirst, $idLast);
+
             DB::table('books_puplisher_relations')->insert([
                 'puplisher_id' => $rnd,
                 'book_id' => $books->id

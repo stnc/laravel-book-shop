@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Puplisher;
 class PuplisherController extends Controller
 {
 
@@ -13,12 +13,13 @@ class PuplisherController extends Controller
     {
 
         //   DB::enableQueryLog();
-        $Puplisher = \App\Puplisher::find($id);
+        $puplisher = Puplisher::find($id);
         //$Books =collect($Puplisher->books)->implode('name', ',');
-        $Books = $Puplisher->books;
+        $books = $puplisher->books;
+      //  dd($books);
         //$query = DB::getQueryLog();
         // print_r($query);
-        return view('puplisher.show', compact('Books', 'Puplisher'));
+        return view('puplisher.show', compact('books', 'puplisher'));
 
 
     }

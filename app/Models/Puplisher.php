@@ -16,6 +16,7 @@ class Puplisher extends Model
 
     public function books()
     {
-        return $this->hasMany(A_books::class, 'puplishing_house_id');
+        return $this->belongsToMany(A_books::class, 'books_puplisher_relations',  'puplisher_id','book_id')
+        ->withTimestamps();
     }
 }

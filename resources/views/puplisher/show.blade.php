@@ -16,11 +16,8 @@
 
 
                 <div class="list-group">
-                    <strong>Yaıncının Kitapları</strong>
-                    @foreach ($Books as $sook)
-                       {{--{!! link_to_route('book.show', $sook->name, ['bookID' => $sook->id]) !!}--}}
-                        <a href="{{ URL::route('book.show', array('bookID' => $sook->id)) }}" class="list-group-item ">{{ $sook->name }}</a>
-                    @endforeach
+                    <strong>Yaıncının kategorileri gelecek s</strong>
+
 
 
 
@@ -33,20 +30,48 @@
                 <div class="card mt-4">
 
                     <div class="card-body">
-                        <h3 class="card-title">{{ $Puplisher->name }}</h3>
+                        <h3 class="card-title">{{ $puplisher->name }}</h3>
 
                         <p class="card-text">
-                            {!! $Puplisher->info  !!}
-
+                            {!! $puplisher->info  !!}
                             <br>
-
-
                     </div>
+
+
                 </div>
+<br>
+
                 <!-- /.card -->
 
+                <div class="row">
 
-                <!-- /.card -->
+                        @foreach ($books as $book)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                  <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                                  <div class="card-body">
+                                    <h4 class="card-title">
+                                      <a href="/book/{{ $book->id }}">{{ $book->name }}</a>
+                                    </h4>
+                                    <h5>$24.99</h5>
+                                    <p class="card-text">
+                                            {{ str_limit($book->info, $limit = 150, $end = '...') }}
+                                    </p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                  </div>
+                                </div>
+                              </div>
+                    @endforeach
+
+
+
+
+
+                </div>
+                <!-- /.row -->
+
 
             </div>
             <!-- /.col-lg-9 -->

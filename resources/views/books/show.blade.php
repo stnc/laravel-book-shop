@@ -24,12 +24,13 @@
                 <div class="list-group">
                     <strong>Kategorlileri</strong>
                     @foreach ($books->categories as $cat)
-                        <a href="#" class="list-group-item ">{{ $cat->name }}</a>
+
                     @endforeach
 
                     Yayıncı Firma
                     <h3 class="card-title">
-                            {{     $books->Puplisher[0]->name  ?? 'default' }}
+                            <a href="/puplisher/{{$books->Puplisher[0]->id  ?? ''}}" class="list-group-item ">  {{$books->Puplisher[0]->name  ?? ''}}</a>
+
                     </h3>
 
 
