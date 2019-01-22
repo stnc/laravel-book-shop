@@ -11,7 +11,9 @@ class A_authors extends Model
 
     public function books()
     {
-        return $this->hasMany(A_books::class, 'authors_id');
+      //  return $this->hasMany(A_books::class, 'authors_id');
+        return $this->belongsToMany(A_books::class, 'book_author_relations',  'book_id','author_id')
+        ->withTimestamps();
     }
 
 

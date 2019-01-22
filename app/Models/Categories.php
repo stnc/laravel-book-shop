@@ -12,6 +12,7 @@ class Categories extends Model
 
     public function books()
     {
-        return $this->belongsToMany(A_books::class)->withTimestamps();
+        return $this->belongsToMany(A_books::class, 'categories_book_relations',  'category_id','book_id' )
+        ->withTimestamps();
     }
 }

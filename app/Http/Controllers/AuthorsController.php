@@ -5,30 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-
+use App\Models\A_authors;
 class AuthorsController extends Controller
 {
 
     public function show($id, Request $request)
     {
 
-
-        //https://startbootstrap.com/template-categories/ecommerce/
-//https://www.kitapyurdu.com/yazar/stefan-zweig/3602.html
         //   DB::enableQueryLog();
-        $Authors = \App\A_authors::find($id);
+        $authors = A_authors::find($id);
 
-        $Comments = $Authors->comments->where('approved', 1);
+       $comments = $authors->comments->where('approved', 1);
 
-        $ToplamBegenilme = $Authors->likes->count();
+       $tags = collect($authors->tags)->implode('name', ',');
 
-        $tags = collect($Authors->tags)->implode('name', ',');
+       $toplamBegenilme = $authors->likes->count();
 
-        $mycat = collect($Authors->tags)->implode('name', ',');
 
         //$query = DB::getQueryLog();
         // print_r($query);
-        return view('authors.show', compact('Authors', 'Comments', "ToplamBegenilme", "tags"));
+        return view('authors.show', compact('authors', 'comments', "toplamBegenilme","tags"));
 
 
 

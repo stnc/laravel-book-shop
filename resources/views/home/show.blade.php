@@ -16,7 +16,7 @@
             <h1 class="my-4">Shop Name</h1>
             <div class="list-group">
                     @foreach ($categories as $cat)
-                       <a href="#" class="list-group-item">{{ $cat->name }}</a>
+                       <a href="/cat/{{ $cat->id }}" class="list-group-item">{{ $cat->name }}</a>
                     @endforeach
             </div>
 

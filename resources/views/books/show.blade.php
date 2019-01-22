@@ -14,7 +14,7 @@
 
                 Kitabın Yazarı/Yazarları
                 @foreach ($books->authors as $author)
-                    <a href="#" class="list-group-item ">{{ $author->name }}</a>
+                    <a href="/author/{{ $author->id }}" class="list-group-item ">{{ $author->name }}</a>
                     <p>
                         {{ str_limit($author->info, $limit = 150, $end = '...') }}
                     </p>

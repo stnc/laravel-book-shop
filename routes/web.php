@@ -58,7 +58,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 */
 
-Route::get('/author/add', 'AuthorsController@add')->name('author.show');
+Route::get('/author/add', 'AuthorsController@add')->name('author.add');
 Route::get('/author/{authur}', 'AuthorsController@show')->name('author.show');
 Route::get('/book/{bookID}', 'BooksController@show')->name('book.show');
-Route::get('/puplisher/{puplish}', 'PuplisherController@show')->name('video.show');
+Route::get('/puplisher/{puplish}', 'PuplisherController@show')->name('puplisher.show');
+Route::get('/cat/{cat}', 'CategoryController@show')->name('category.show');
