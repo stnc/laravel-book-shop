@@ -9,7 +9,7 @@ php artisan make:seeder CategoriesBookRelationTableSeeder
 php artisan make:seeder BookAuthorRelationTableSeeder
 php artisan make:seeder CategoriesBookRelationTableSeeder
 php artisan make:seeder  PuplishingHouseTableSeeder
-
+php artisan make:seeder  ProductsTableSeeder
 
 php artisan make:factory CommentsFactory --model=Models\Comments\
 ---php artisan make:factory UserDetailFactory --model=Models\UserDetail\
@@ -36,4 +36,5 @@ php artisan db:seed --class=BookAuthorRelationTableSeeder
 
 php artisan db:seed --class=PuplishingHouseTableSeeder
 php artisan db:seed --class=BookPuplisherRelationsTableSeeder
+
 

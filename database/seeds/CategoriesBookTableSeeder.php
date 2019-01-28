@@ -14,37 +14,40 @@ class CategoriesBookTableSeeder extends Seeder
       
 
         DB::table('categories_book')->insert([
-            'name' => 'Edebiyat',
+            'name' => 'Biography',
         ]);
 
         DB::table('categories_book')->insert([
-            'name' => 'Eğlence-Mizah',
-        ]);
-
-
-        DB::table('categories_book')->insert([
-            'name' => 'Ekonomi',
+            'name' => 'Business',
         ]);
 
 
         DB::table('categories_book')->insert([
-            'name' => 'Felsefe-Düşünce',
-        ]);
-
-        DB::table('categories_book')->insert([
-            'name' => 'Bilgisayar',
+            'name' => 'Education',
         ]);
 
 
         DB::table('categories_book')->insert([
-            'name' => 'Bilim-Mühendislik',
+            'name' => 'Kids',
         ]);
 
 
         DB::table('categories_book')->insert([
-            'name' => 'Çocuk Kitapları',
+            'name' => 'Romance',
         ]);
 
+
+        DB::table('categories_book')->insert([
+            'name' => 'Social Sciences',
+        ]);
+
+        DB::table('categories_book')->insert([
+            'name' => 'History',
+        ]);
+
+        DB::table('categories_book')->insert([
+            'name' => 'Philosophy',
+        ]);
 
     }
 }

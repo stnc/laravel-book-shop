@@ -14,7 +14,7 @@ class CategoriesBookRelationTableSeeder extends Seeder
         factory(App\Models\A_books::class)->create()->each(function ($books) {
             $faker = Faker::create();
             DB::table('categories_book_relations')->insert([
-                'category_id' => rand(1, 7),
+                'category_id' => rand(1, 8),
                 'book_id' => $books->id,
                 'created_at'  => $faker->dateTimeInInterval('-7 days'),
                 'updated_at'  => $faker->dateTimeInInterval('-7 days'),

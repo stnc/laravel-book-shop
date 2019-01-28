@@ -35,14 +35,13 @@ class HomeController extends Controller
 
       // $books = A_books::all();
 
-//https://www.okuoku.com/urun/listele/yeni-cikanlar/2/sirala/2
-//https://www.bkmkitap.com/?fbclid=IwAR3juR2qj7_IgHvDCyEqD4oEq7JNUaJgFNLmeOCBn4aRKchxE33wW83EoDM
-
-
+/*
          $books= Cache::remember('books3', 22*60, function() {
                     return A_books::take(5000) ->get();
         });
-     //  $books = A_books::take(5000) ->get();
+*/
+
+     $books = A_books::take(5000) ->get();
 
 /*
 $posts =A_books::take(2000) ->get();
@@ -60,12 +59,12 @@ $posts =A_books::take(2000) ->get();
 */
 
 
-     //   $categories = Categories::orderBy('name', 'desc')->get();
+        $categories = Categories::orderBy('name', 'desc')->get();
 
-        $categories= Cache::remember('cat', 22*60, function() {
+     /*   $categories= Cache::remember('cat', 22*60, function() {
             return Categories::orderBy('name', 'desc')->get();
         });
-
+*/
 
         return view('home.show', compact('books', "tags", 'categories'));
 
