@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProducts extends Migration
+class CreateABookAuthorLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateProducts extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->increments('product_id');
-            $table->string('name');
-            $table->text('description')->nullable();
+        Schema::create('a_book_author_likes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->morphs('liketable'); // Adds unsigned INTEGER upvoteable_id and STRING upvoteable_type
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateProducts extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('a_book_author_likes');
     }
 }

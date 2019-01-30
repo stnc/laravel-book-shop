@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(AuthorTableSeeder::class);
        // $this->call(BooksTableSeeder::class);
 
+/*
         $this->call(BookAuthorRelationTableSeeder::class);
         $this->call(UserDetailTableSeeder::class);
         $this->call(BooksAuthorsLikeTableSeeder::class);
@@ -34,6 +35,17 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesBookRelationTableSeeder::class);
         $this->call(PuplishingHouseTableSeeder::class);
         $this->call(BookPuplisherRelationsTableSeeder::class);
+*/
+
+
+        //-----------------POSTS--------------
+         $this->call(PostsTableSeeder::class);
+        $this->call(UserDetailTableSeeder::class);
+        $this->call(CategoriesPostsTableSeeder::class);
+        $this->call(CategoriesPostsRelationTableSeeder::class);
+        $this->call(PostCommentsTableSeeder::class);
+        $this->call(PostsCommentsLikeTableSeeder::class);
+        $this->call(PostsTaggasblesTableSeeder::class);
 
         $this->command->info("Database seeded.");
 
