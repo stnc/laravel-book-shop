@@ -20,7 +20,7 @@ class CommentsTableSeeder extends Seeder
                 'commentable_id' => $books->id,
                 'user_id' => 1,
                 'comment_author' => $faker->name,
-                'comment_author_url' => $faker->url,
+                'comment_author_url' => $faker->domainName,
                 'comment_content' => $faker->text(50),
                 'comment_approved' => 1,
                 'created_at'  => $faker->dateTimeInInterval('-7 days'),

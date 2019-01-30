@@ -14,7 +14,7 @@ use App\Models\Comments;
 use App\Models\CategoriesBook;
 
 
-class HomeController extends Controller
+class PostsController extends Controller
 {
     /**
      * Create a new controller instance.

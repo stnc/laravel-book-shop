@@ -43,7 +43,7 @@ class A_books extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Categories::class, 'categories_book_relations',  'book_id','category_id')
+        return $this->belongsToMany(CategoriesBook::class, 'categories_book_relations',  'book_id','category_id')
             ->withTimestamps();
     }
 

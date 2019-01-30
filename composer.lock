@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f293632f92e5e707d188e16d66fec1ac",
+    "content-hash": "ad6681d82165780eab6cb7d81c6a4dee",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2184,6 +2184,33 @@
                 "spatie"
             ],
             "time": "2018-12-16T13:58:38+00:00"
+        },
+        {
+            "name": "stnc/shopping-cart",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stnc/shopping-cart.git",
+                "reference": "18f561e758c3ea882b223cfb18dedc226c6ba20a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stnc/shopping-cart/zipball/18f561e758c3ea882b223cfb18dedc226c6ba20a",
+                "reference": "18f561e758c3ea882b223cfb18dedc226c6ba20a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "stnc\\shoppingCart\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "php shopping cart class",
+            "time": "2019-01-29T01:15:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
