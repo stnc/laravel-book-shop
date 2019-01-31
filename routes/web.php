@@ -10,21 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//https://www.easylaravelbook.com/blog/creating-a-hasmany-relation-in-laravel-5/
-//https://itsolutionstuff.com/post/laravel-5-ajax-crud-with-pagination-example-and-demo-from-scratchexample.html   //ajax
-//https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
-//https://martinbean.co.uk/blog/2014/07/04/re-using-controllers-for-admin-and-non-admin-routes-in-laravel/
-//https://itsolutionstuff.com/post/crud-create-read-update-delete-example-in-laravel-52-from-scratchexample.html
+//https://appdividend.com/2018/09/06/laravel-5-7-crud-example-tutorial/
 
-//https://tighten.co/blog/extending-models-in-eloquent
-//morpmap kullanımı
-//https://laracasts.com/discuss/channels/eloquent/using-morphmap-on-more-than-one-polymorphic-relationship
 
-use App\Posts;
-use App\PostsCategories;
-use App\PostTags;
-use App\PostsComments;
-use App\Books;
+///https://designrevision.com/demo/shards-dashboards/index.html
+
 
 Route::get('/','HomeController@index')->name('home');
 
@@ -35,11 +25,9 @@ Route::get('/','HomeController@index')->name('home');
 //https://www.devproblems.com/laravel-5-admin-middleware-is_admin-user-check/  admin middware
 Route::group(['middleware' => ['auth', 'admin'],'namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
-
     //Route::resource('auth', 'AuthController');
  //  Route::auth();
     Route::resource('posts','PostsController');
-
 
 });
 /*
