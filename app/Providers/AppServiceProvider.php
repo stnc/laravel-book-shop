@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'books' => 'App\Models\A_books',
             'authors' => 'App\Models\A_authors',
+            'posts' => 'App\Models\Posts',
         ]);
     }
 
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 }
