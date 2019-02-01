@@ -16,23 +16,14 @@
 ///https://designrevision.com/demo/shards-dashboards/index.html
 
 
-Route::get('/','HomeController@index')->name('home');
 
 
 
 // backend routes http://www.w3programmers.com/laravel-route-groups/
-/*
-//https://www.devproblems.com/laravel-5-admin-middleware-is_admin-user-check/  backend middware
-Route::group(['middleware' => ['auth', 'backend'],'namespace' => 'Admin', 'prefix' => 'backend'], function () {
-
-    //Route::resource('auth', 'AuthController');
- //  Route::auth();
-    Route::resource('posts','PostsController');
-
-});*/
 
 
-Route::resource('posts','PostsController');
+
+//Route::resource('posts','PostsController');
 Route::get('/author/add', 'AuthorsController@add')->name('author.add');
 Route::get('/author/{authur}', 'AuthorsController@show')->name('author.show');
 Route::get('/book/{bookID}', 'BooksController@show')->name('book.show');
@@ -43,3 +34,27 @@ Route::get('/cat/{cat}', 'CategoryController@show')->name('category.show');
 
 Route::get('contact', 'MailController@contact');
 Route::post('contact/send', 'MailController@send');
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::resource('auth', 'AuthController');
+
+
+    Route::group(['middleware' => ['admin_auth', \App\Http\Middleware\AdminShare::class]], function () {
+        Route::any('dashboard/{sing_page?}', 'DashBoardController');
+    });
+
+
+    Route::group(['prefix' => 'account'], function () {
+        Route::get('/', 'AccountController@index');
+        Route::put('/', 'AccountController@update');
+        Route::delete('/comment/{comment}', 'AccountController@deleteMessage');
+        Route::post('/mail-send/{user}', 'AccountController@mailSend');
+        Route::post('/usercreate', 'AccountController@usercreate');
+    });
+});
