@@ -20,34 +20,26 @@ Route::get('/','HomeController@index')->name('home');
 
 
 
-// admin routes http://www.w3programmers.com/laravel-route-groups/
-
-//https://www.devproblems.com/laravel-5-admin-middleware-is_admin-user-check/  admin middware
-Route::group(['middleware' => ['auth', 'admin'],'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+// backend routes http://www.w3programmers.com/laravel-route-groups/
+/*
+//https://www.devproblems.com/laravel-5-admin-middleware-is_admin-user-check/  backend middware
+Route::group(['middleware' => ['auth', 'backend'],'namespace' => 'Admin', 'prefix' => 'backend'], function () {
 
     //Route::resource('auth', 'AuthController');
  //  Route::auth();
     Route::resource('posts','PostsController');
 
-});
-/*
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+});*/
 
 
-*/
-
+Route::resource('posts','PostsController');
 Route::get('/author/add', 'AuthorsController@add')->name('author.add');
 Route::get('/author/{authur}', 'AuthorsController@show')->name('author.show');
 Route::get('/book/{bookID}', 'BooksController@show')->name('book.show');
 Route::get('/puplisher/{puplish}', 'PuplisherController@show')->name('puplisher.show');
 Route::get('/cat/{cat}', 'CategoryController@show')->name('category.show');
+
+
+
+Route::get('contact', 'MailController@contact');
+Route::post('contact/send', 'MailController@send');

@@ -16,9 +16,8 @@
                     <strong>Yazarın diğer kitapları</strong>
 
                     @foreach ($authors->books as $book)
-                  <a href="/book/{{$book->id}}">{{$book->name}}</a>
-
-                @endforeach
+                        <a href="/book/{{$book->id}}">{{$book->name}}</a>
+                    @endforeach
 
                 </div>
             </div>
@@ -41,7 +40,6 @@
                 <!-- /.card -->
 
 
-
                 <div class="card card-outline-secondary my-4">
                     <div class="card-header">
                         Kitabın Yorumları
@@ -49,7 +47,8 @@
                     <div class="card-body">
                         @foreach ($authors->comments as $comment)
                             <p>{{$comment->comment_content}}</p>
-                            <small class="text-muted">Posted by {{$comment->comment_author}} on {{$comment->created_at}} </small>
+                            <small class="text-muted">Posted by {{$comment->comment_author}}
+                                on {{$comment->created_at}} </small>
                             <hr>
                         @endforeach
 

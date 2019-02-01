@@ -31,7 +31,7 @@ class BooksController extends Controller
 //        dd($CommentsAuthor);
 //        $query = DB::getQueryLog();
       ////   print_r($query);
-        return view('books.show', compact('books', 'comments', "commentsAuthor", "toplamBegenilme", "tags", 'categories', "userDetail"));
+        return view('ebook.books.show', compact('books', 'comments', "commentsAuthor", "toplamBegenilme", "tags", 'categories', "userDetail"));
     }
 
 

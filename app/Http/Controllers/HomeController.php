@@ -66,7 +66,7 @@ $posts =A_books::take(2000) ->get();
         });
 */
 
-        return view('home.show', compact('books', "tags", 'categories'));
+        return view('ebook.home.show', compact('books', "tags", 'categories'));
 
     }
 }

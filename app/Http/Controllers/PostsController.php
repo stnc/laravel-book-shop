@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\Posts as AllPosts;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
@@ -18,7 +18,6 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-
     {
         $category = $request->input('search');
         if ($request->has('search')) {
@@ -28,10 +27,10 @@ class PostsController extends Controller
             })->paginate(5);
 
 
-            return view('PostCRUD.index', compact('Posts'))->with('i', ($request->input('page', 1) - 1) * 5);;
+            return view('backend.posts.index', compact('Posts'))->with('i', ($request->input('page', 1) - 1) * 5);;
         } else {
             $Posts = AllPosts::orderBy('id', 'DESC')->paginate(5);
-            return view('PostCRUD.index', compact('Posts'))->with('i', ($request->input('page', 1) - 1) * 5);
+            return view('backend.posts.index', compact('Posts'))->with('i', ($request->input('page', 1) - 1) * 5);
         }
 
     }
@@ -47,7 +46,9 @@ class PostsController extends Controller
 
     {
 
-        return view('PostCRUD.create');
+        $cats = \App\Models\Categories::all();
+
+        return view('backend.posts.create',compact('cats'));
 
     }
 
@@ -60,31 +61,48 @@ class PostsController extends Controller
      */
 
     public function store(Request $request)
-
     {
 
+        $destinationPath = 'uploads';
+        $fileName = null;
+        if ($request->hasFile('media_picture')) {
+
+            $file = $request->media_picture;
+
+            $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+
+            $fileName = $timestamp . '-' . $file->getClientOriginalName();
+
+            $file->move($destinationPath, $fileName);
+
+        }
+
+
         $this->validate($request, [
-
             'post_title' => 'required',
-
             'post_content' => 'required',
 
         ]);
 
-        $update_data = ['post_title' => $request->post_title,
+        $update_data = [
+            'post_title' => $request->post_title,
             'post_content' => $request->post_content,
+            'media_picture' => $fileName,
+            'post_author' => 1,
+            'post_status' => 1,
+            'post_order' => 1,
         ];
 
-        //  AllPosts::create($request->all());
-        $task = AllPosts::create($update_data);
+        $posts = AllPosts::create($update_data);
 
         $explode = explode(',', $request->get('tags'));
         foreach ($explode as $exp) {
-            $task->tags()->create([
-                'name' => $exp,
-            ]);
+            $tag = new \App\Models\Tag;
+            $tag->name = $exp;
+            $posts->tags()->save($tag);
         }
 
+        $posts->categories()->attach($request->get('cat'));
 
         return redirect()->route('posts.index')
             ->with('success', 'AllPosts created successfully');
@@ -103,21 +121,12 @@ class PostsController extends Controller
 
     {
 
-        $Posts = AllPosts::find($id);
-        $tags = ($Posts->tags()->get());
-        $comments = ($Posts->comments()->get());
-        $user = $Posts->user()->pluck('id');
-        $userDe = UserDetail::find($user[0]);
-        // echo $user[0];
-
-        dd($userDe);
+        $posts = AllPosts::find($id);
+        $tags = ($posts->tags()->get());
+        $comments = ($posts->comments()->get());
 
 
-        //now get all user and services in one go without looping using eager loading
-        //In your foreach() loop, if you have 1000 users you will make 1000 queries
-
-
-        return view('PostCRUD.show', compact('Posts', 'tags'));
+        return view('backend.posts.show', compact('posts', 'tags'));
 
 
     }
@@ -138,7 +147,7 @@ class PostsController extends Controller
         //   $Posts = AllPosts::find($id)->categories()->get();//reverse
         $Posts = AllPosts::where('id', '=', $id)->with('categories', 'comments', 'tags')->first();;
 
-        return view('PostCRUD.edit', compact('Posts'));
+        return view('backend.posts.edit', compact('Posts'));
 
     }
 
@@ -154,8 +163,6 @@ class PostsController extends Controller
     public function update(Request $request, $id)
 
     {
-////https://laraveldaily.com/upload-multiple-files-laravel-5-4/
-/// /// https://laracasts.com/discuss/channels/laravel/how-to-display-file-which-had-already-upload-laravel-52?page=1
 
         $file = $request->file('media_picture');
         $destinationPath = 'uploads';
@@ -164,6 +171,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'post_title' => 'required',
             'post_content' => 'required',
+
             'media_picture' => ' mimes:jpeg,jpg,png | max:1000',
         ]);
 
@@ -177,9 +185,11 @@ class PostsController extends Controller
         }
 
 
-        $update_data = ['post_title' => $request->post_title,
+        $update_data = [
+            'post_title' => $request->post_title,
             'post_content' => $request->post_content,
-            'media_picture' => $fileName
+            'media_picture' => $fileName,
+            'post_author' => 1
         ];
 
 

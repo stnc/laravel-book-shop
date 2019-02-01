@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
 
-//  protected $fillable = ['name','authors_id'];
+  protected $fillable = ['post_title','post_content','media_picture','post_author','post_status','post_order'];
+
+
+
 
     public function likes()
     {
@@ -16,14 +19,12 @@ class Posts extends Model
 
     public function tags()
     {
-        //https://itsolutionstuff.com/post/laravel-many-to-many-polymorphic-relationship-tutorialexample.html
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
 
     public function comments()
     {
-//        return $this->hasMany(AuthorsComments::class, 'book_id');
         return $this->morphMany(Comments::class, 'commentable');
     }
 
@@ -34,5 +35,11 @@ class Posts extends Model
         return $this->belongsToMany(Categories::class, 'posts_categories_relations',  'post_id','category_id')
             ->withTimestamps();
     }
+
+    public function user()
+    {
+        return  $this->hasOne(User::class);
+    }
+
 
 }

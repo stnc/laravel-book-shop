@@ -35,7 +35,7 @@
 
                 <strong>Title:</strong>
 
-                {{ $Posts->post_title }}
+                {{ $posts->post_title }}
 
             </div>
 
@@ -48,7 +48,7 @@
 
                 <strong>Description:</strong>
 
-                {{ $Posts->post_content }}
+                {{ $posts->post_content }}
 
             </div>
 
@@ -59,7 +59,7 @@
             <div class="form-group">
 
                 <strong>İmage:</strong>
-                <img src="/uploads/{{ $Posts->media_picture}}" alt="">
+                <img src="/uploads/{{ $posts->media_picture}}" alt="">
 
             </div>
 
