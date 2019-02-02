@@ -3,9 +3,14 @@
 
 https://github.com/nunomaduro/collision
 
+admin panel user interface
+https://designrevision.com/downloads/shards-dashboard-lite/
 
+laravel admin auth 
+https://github.com/jayminpanchal/laravel-multiauth
 
 Laravel 5.7 
+
 
 
 ### Installation

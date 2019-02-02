@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::any('dashboard/{sing_page?}', 'DashBoardController');
     });
 
-
+                                                                                                       hhhhhhhhhhhhhhhhhhhh
     Route::group(['prefix' => 'account'], function () {
         Route::get('/', 'AccountController@index');
         Route::put('/', 'AccountController@update');
@@ -64,15 +64,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::resource('auth', 'AuthController');
-
-
 
     Route::get('home', 'HomeController@index');
     Route::get('/', 'Auth\LoginController@showLoginForm');
-    Route::post('login', 'Auth\LoginController@login')->name('admin.login');
-    Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
-    Route::get('register', 'Auth\RegisterController@showRegistrationForm');
-    Route::post('register', 'Auth\RegisterController@register')->name('admin.register');
+
+    Route::group(['prefix' => 'account'], function () {
+        Route::get('login', 'Auth\LoginController@showLoginForm');
+        Route::post('login', 'Auth\LoginController@login')->name('admin.login');
+        Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
+        Route::get('register', 'Auth\RegisterController@showRegistrationForm');
+        Route::post('register', 'Auth\RegisterController@register')->name('admin.register');
+    });
+
 
 });
