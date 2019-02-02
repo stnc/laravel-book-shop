@@ -9,6 +9,10 @@ https://designrevision.com/downloads/shards-dashboard-lite/
 laravel admin auth 
 https://github.com/jayminpanchal/laravel-multiauth
 
+
+https://sebastiandedeyne.com/passing-data-to-layouts-in-blade-through-extends/
+
+
 Laravel 5.7 
 
 
