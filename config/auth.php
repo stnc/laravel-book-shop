@@ -74,14 +74,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'users',
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
         ],
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
