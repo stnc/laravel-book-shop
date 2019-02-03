@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('home', 'HomeController@index');
+    Route::resource('posts', 'PostsController');
     Route::get('/', 'Auth\LoginController@showLoginForm');
 
     Route::group(['prefix' => 'account'], function () {
@@ -78,3 +79,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 
 });
+
+
+

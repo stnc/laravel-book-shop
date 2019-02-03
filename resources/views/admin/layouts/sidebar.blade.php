@@ -24,7 +24,7 @@
     <div class="nav-wrapper">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link " href="index.html">
+                <a class="nav-link " href="http://blog.test/admin/posts/create">
                     <i class="material-icons">edit</i>
                     <span>Blog Dashboard</span>
                 </a>

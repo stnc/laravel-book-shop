@@ -11,11 +11,11 @@ class Posts extends Model
 
 
 
-
+/*
     public function likes()
     {
         return $this->morphMany(A_book_author_like::class, 'liketable');
-    }
+    }*/
 
     public function tags()
     {
