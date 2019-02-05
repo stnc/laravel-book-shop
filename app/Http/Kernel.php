@@ -2,8 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AdminRedirectIfAuthenticated;
-use App\Http\Middleware\AdminRedirectIfNotAuthenticated;
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -55,13 +54,11 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'auth.admin' => \App\Http\Middleware\AuthenticateAdmin::class,
-
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'admin.auth' => AdminRedirectIfNotAuthenticated::class,
-        'admin.guest' => AdminRedirectIfAuthenticated::class,
+        'admin.auth' => \App\Http\Middleware\AdminRedirectIfNotAuthenticated::class,
+        'admin.guest' => \App\Http\Middleware\AdminRedirectIfAuthenticated::class,
     ];
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Models\Posts as AllPosts;
+use App\Models\Posts;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +21,7 @@ class PostsController extends Controller
     {
         $category = $request->input('search');
         if ($request->has('search')) {
-            $Posts = AllPosts::with('comments')->whereHas('comments', function ($q) use ($category) {
+            $Posts = Posts::with('comments')->whereHas('comments', function ($q) use ($category) {
                 //$q->where('CommentId',$category);
                 $q->where('comment_content', 'LIKE', '%' . $category . '%');
             })->paginate(5);
@@ -29,7 +29,7 @@ class PostsController extends Controller
 
             return view('admin.posts.index', compact('Posts'))->with('i', ($request->input('page', 1) - 1) * 5);;
         } else {
-            $Posts = AllPosts::orderBy('id', 'DESC')->paginate(5);
+            $Posts = Posts::orderBy('id', 'DESC')->paginate(5);
             return view('admin.posts.index', compact('Posts'))->with('i', ($request->input('page', 1) - 1) * 5);
         }
 
@@ -47,7 +47,7 @@ class PostsController extends Controller
 
         $cats = \App\Models\Category::all();
 
-        return view('admin.posts.create',compact('cats'));
+        return view('admin.posts.create', compact('cats'));
 
     }
 
@@ -92,7 +92,7 @@ class PostsController extends Controller
             'post_order' => 1,
         ];
 
-        $posts = AllPosts::create($update_data);
+        $posts = Posts::create($update_data);
 
         $explode = explode(',', $request->get('tags'));
         foreach ($explode as $exp) {
@@ -104,7 +104,7 @@ class PostsController extends Controller
         $posts->categories()->attach($request->get('cat'));
 
         return redirect()->route('posts.index')
-            ->with('success', 'AllPosts created successfully');
+            ->with('success', 'Posts created successfully');
 
     }
 
@@ -120,12 +120,10 @@ class PostsController extends Controller
 
     {
 
-        $posts = AllPosts::find($id);
+        $posts = Posts::find($id);
         $tags = ($posts->tags()->get());
         $comments = ($posts->comments()->get());
-
-
-        return view('admin.posts.show', compact('posts', 'tags'));
+        return view('admin.posts.show', compact('posts', 'tags', "comments"));
 
 
     }
@@ -141,46 +139,56 @@ class PostsController extends Controller
     public function edit($id)
 
     {
+        $posts = Posts::where('id', '=', $id)->with('categories', 'comments')->first();
 
-        // $Posts = AllPosts::find($id);
-        //   $Posts = AllPosts::find($id)->categories()->get();//reverse
-        $Posts = AllPosts::where('id', '=', $id)->with('categories', 'comments', 'tags')->first();;
+        $cats = \App\Models\Category::all()->pluck('name', 'id');
 
-        return view('admin.posts.edit', compact('Posts'));
+        $collection = collect($cats);
+
+        $pluck = $posts->categories->pluck('name', 'id');
+
+        $otherCat = $collection->diff($pluck);
+
+        $tagsArray = $posts->tags->toArray();
+
+        $collectionTags = collect($tagsArray);
+
+        $tags = $collectionTags->implode('name', ',');
+
+        return view('admin.posts.edit', compact('posts', 'otherCat', 'tags'));
 
     }
 
 
-    /**
+    /**00000000000000000000000000000000000000000000000000  ,
+     *         00
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responseç*. ü-
+     *
      */
 
     public function update(Request $request, $id)
 
     {
 
-        $file = $request->file('media_picture');
-        $destinationPath = 'uploads';
-
+//dd($request->get('cat'));
 
         $this->validate($request, [
             'post_title' => 'required',
             'post_content' => 'required',
-
             'media_picture' => ' mimes:jpeg,jpg,png | max:1000',
         ]);
 
-
+        $destinationPath = 'uploads';
+        $fileName = null;
         if ($request->hasFile('media_picture')) {
             $file = $request->media_picture;
-            $fileName = $file->getClientOriginalName();
-            $file->move($destinationPath, $file->getClientOriginalName());
-        } else {
-            $fileName = null;
+            $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+            $fileName = $timestamp . '-' . $file->getClientOriginalName();
+            $file->move($destinationPath, $fileName);
         }
 
 
@@ -191,11 +199,22 @@ class PostsController extends Controller
             'post_author' => 1
         ];
 
+        $posts = Posts::find($id);
 
-        AllPosts::find($id)->update($update_data);
+        $posts->update($update_data);
 
-        return redirect()->route('posts.index')
-            ->with('success', 'AllPosts updated successfully');
+        $posts->categories()->sync($request->get('cat'));
+
+        $explode = explode(',', $request->get('tags'));
+
+        foreach ($explode as $exp) {
+            $tag = new \App\Models\Tag;
+            $tag->name = $exp;
+            $posts->tags()->save($tag);
+        }
+
+        return redirect()->route('posts.edit', ["id" => $id])
+            ->with('success', 'Posts updated successfully');
 
     }
 
@@ -211,10 +230,10 @@ class PostsController extends Controller
 
     {
 
-        AllPosts::find($id)->delete();
+        Posts::find($id)->delete();
 
         return redirect()->route('posts.index')
-            ->with('success', 'AllPosts deleted successfully');
+            ->with('success', 'Posts deleted successfully');
 
     }
 }

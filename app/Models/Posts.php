@@ -32,7 +32,7 @@ class Posts extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Categories::class, 'posts_categories_relations',  'post_id','category_id')
+        return $this->belongsToMany(Category::class, 'posts_categories_relations',  'post_id','category_id')
             ->withTimestamps();
     }
 
