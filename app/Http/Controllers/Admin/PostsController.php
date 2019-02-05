@@ -8,9 +8,21 @@ use Illuminate\Support\Carbon;
 use App\Models\Posts;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
-
-class PostsController extends Controller
+use Illuminate\Support\Facades\Auth;
+class PostsController extends  AdminController
 {
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+//        parent::__construct();
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -19,6 +31,9 @@ class PostsController extends Controller
      */
     public function index(Request $request)
     {
+//        $userId =
+//        dd(Auth::id());
+//        dd(Auth::user()->id);
         $category = $request->input('search');
         if ($request->has('search')) {
             $Posts = Posts::with('comments')->whereHas('comments', function ($q) use ($category) {

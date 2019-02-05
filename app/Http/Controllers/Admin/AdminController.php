@@ -18,6 +18,6 @@ abstract class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin.auth');
+        $this->middleware('auth');
     }
 }

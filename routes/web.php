@@ -63,16 +63,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 */
 
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
 
     Route::get('home', 'HomeController@index');
     Route::resource('posts', 'PostsController');
-    Route::get('/', 'Auth\LoginController@showLoginForm');
+    Route::get('/', 'HomeController@index');
+
 
     Route::group(['prefix' => 'account'], function () {
         Route::get('login', 'Auth\LoginController@showLoginForm');
         Route::post('login', 'Auth\LoginController@login')->name('admin.login');
-        Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
+        Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
         Route::get('register', 'Auth\RegisterController@showRegistrationForm');
         Route::post('register', 'Auth\RegisterController@register')->name('admin.register');
     });

@@ -7,7 +7,8 @@ admin panel user interface
 https://designrevision.com/downloads/shards-dashboard-lite/
 
 laravel admin auth 
-https://github.com/jayminpanchal/laravel-multiauth
+https://scotch.io/tutorials/how-to-implement-multiple-user-authentications-using-laravel-guards
+https://github.com/fisayoafolayan/laravel-multiple-auth
 
 
 https://sebastiandedeyne.com/passing-data-to-layouts-in-blade-through-extends/
@@ -15,8 +16,13 @@ https://sebastiandedeyne.com/passing-data-to-layouts-in-blade-through-extends/
 
 Laravel 5.7 
 
+TODO 
+https://laravel-news.com/how-to-add-tagging-to-your-laravel-app
 
-
+roles
+https://stackoverflow.com/questions/37093523/laravel-how-to-check-if-user-is-admin
+https://medium.com/justlaravel/how-to-use-middleware-for-content-restriction-based-on-user-role-in-laravel-2d0d8f8e94c6
+https://www.codementor.io/okoroaforchukwuemeka/9-tips-to-set-up-multiple-authentication-in-laravel-ak3gtwjvt
 ### Installation
 
 1. Clone repo

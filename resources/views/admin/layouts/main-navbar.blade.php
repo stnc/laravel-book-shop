@@ -59,7 +59,7 @@
                     <a class="dropdown-item" href="add-new-post.html">
                         <i class="material-icons">note_add</i> Add New Post</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#">
+                    <a class="dropdown-item text-danger" href="/admin/account/logout">
                         <i class="material-icons text-danger"></i> Logout </a>
                 </div>
             </li>

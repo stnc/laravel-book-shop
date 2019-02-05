@@ -46,12 +46,12 @@ class LoginController extends Controller
      */
     protected function credentials(\Illuminate\Http\Request $request)
     {
-        $credentials = $request->only($this->username(), ‘password’);
+        $credentials = $request->only($this->username(), 'password');
 
-        return array_add($credentials, ‘status’, ‘1’);
+        return array_add($credentials, 'status', '1');
     }
 
     public function findForPassport($identifier) {
-        return User::orWhere(‘email’, $identifier)->where(‘status’, 1)->first();
+        return User::orWhere('email', $identifier)->where('status', 1)->first();
     }
 }

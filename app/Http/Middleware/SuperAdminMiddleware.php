@@ -2,10 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Language;
 use Closure;
-
-class AdminShare
+use Illuminate\Http\Response;
+class SuperAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +15,10 @@ class AdminShare
      */
     public function handle($request, Closure $next)
     {
-        view()->share('languages',Language::all());
+        if ($request->user() && $request->user()->type != 'super_admin')
+        {
+            return new Response(view('unauthorized')->with('role', 'SUPER ADMIN'));
+        }
         return $next($request);
     }
 }
