@@ -19,7 +19,7 @@ class PuplisherController extends Controller
       //  dd($books);
         //$query = DB::getQueryLog();
         // print_r($query);
-        return view('puplisher.show', compact('books', 'puplisher'));
+        return view('ebook.puplisher.show', compact('books', 'puplisher'));
 
 
     }

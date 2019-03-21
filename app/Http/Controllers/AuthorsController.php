@@ -24,7 +24,7 @@ class AuthorsController extends Controller
 
         //$query = DB::getQueryLog();
         // print_r($query);
-        return view('authors.show', compact('authors', 'comments', "toplamBegenilme","tags"));
+        return view('ebook.authors.show', compact('authors', 'comments', "toplamBegenilme","tags"));
 
 
 

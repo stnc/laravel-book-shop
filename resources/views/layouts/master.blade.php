@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=yes">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/js/bootstrap.min.js"></script>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,600" rel="stylesheet" type="text/css">
 

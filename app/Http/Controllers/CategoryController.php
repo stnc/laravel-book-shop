@@ -10,6 +10,6 @@ class CategoryController extends Controller
     {
         $catInfo = Categories::find($id);
         $books = $catInfo->books;
-        return view('cat.show', compact('books',"catInfo"));
+        return view('ebook.cat.show', compact('books',"catInfo"));
     }
 }

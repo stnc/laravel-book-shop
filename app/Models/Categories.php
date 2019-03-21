@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Categories extends Model
 {
     protected $guarded = array();
-    protected $table = "categories_book";
+    protected $table = "posts_categories";
 
-    public function books()
+    public function posts()
     {
-        return $this->belongsToMany(A_books::class, 'categories_book_relations',  'category_id','book_id' )
-        ->withTimestamps();
+        return $this->belongsToMany(Posts::class, 'posts_categories_relations', 'category_id', 'post_id')
+            ->withTimestamps();
     }
 }
+

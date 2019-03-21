@@ -6,20 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-
-    /**
-     * Get all of the posts that are assigned this tag.
-     */
-    public function authors()
-    {
-        return $this->morphedByMany(A_authors::class, 'taggable');
-    }
+    protected $fillable = ['name'];
 
     /**
      * Get all of the videos that are assigned this tag.
      */
-    public function books()
+    public function posts()
     {
-        return $this->morphedByMany(A_books::class, 'taggable');
+        return $this->morphedByMany(Posts::class, 'taggable');
     }
+
 }
